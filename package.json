@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/acele-happy/ATPL_Portifolio_Backed/issues"
   },
-  "homepage": "https://github.com/acele-happy/ATPL_Portifolio_Backed#readme"
+  "homepage": "https://github.com/acele-happy/ATPL_Portifolio_Backed#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "joi": "^17.6.0",
+    "mongoose": "^6.2.10"
+  }
 }
