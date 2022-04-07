@@ -1,0 +1,20 @@
+{
+  "name": "atpl_portifolio_backed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acele-happy/ATPL_Portifolio_Backed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acele-happy/ATPL_Portifolio_Backed/issues"
+  },
+  "homepage": "https://github.com/acele-happy/ATPL_Portifolio_Backed#readme"
+}
