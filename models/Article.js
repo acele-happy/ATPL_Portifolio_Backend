@@ -4,11 +4,11 @@ const {Schema, model}= mongoose
 const articleSchema = new Schema({
     Picture:{
         type: String,
-        require: true
+        required: true
     },
     Content:{
         type: String,
         required: true
     }
 })
-export const Article = model("Articles",articleSchema)
+export const Article = model("article",articleSchema)
