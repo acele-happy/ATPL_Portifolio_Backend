@@ -32,8 +32,7 @@ export const getAllArticles = async (req,res)=>{
 
 export const getArticleById = async(req,res)=>{
     try{
-        console.log("paramssss "+req.params.id)
-        const result = await Article.findById(req.params._id)
+        const result = await Article.findById(req.params.id)
         if(!result){
             res.send("Invalid article id !").status(400)
         }
@@ -76,3 +75,42 @@ export const updateArticle = async(req,res)=>{
     }
 }
 
+
+export const addComment= async(req,res)=>{
+   try{
+    let commenter = req.User._id
+    let content= req.body.content
+    let articleId= req.params.id
+
+
+    let comment={
+        userId: commenter,
+        content: content,
+        date: Date.now()
+    }
+
+    let article= await Article.findById(articleId)
+    article.Comments.push(comment)
+    article.save()
+    return res.json({message: "comment added successfully", status: 201, data: article})
+   }catch(e){
+    console.log(e);
+        return res.json({message: "An error occured, try again", status: 500})
+   }
+}
+
+export const likeUnlikeArticle = async(req,res)=>{
+    try{
+        let articleId= req.params.id
+        let userId = req.User._id
+
+        let article = Article.findById(articleId)
+        if(!article){
+            return res.json({message: "The property with the given id was not found", status: 400})
+        }
+
+
+    }catch(e){
+        return res.json({message: "An error occured, try again", status: 500})
+    }
+}

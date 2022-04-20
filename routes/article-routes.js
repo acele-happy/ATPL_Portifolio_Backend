@@ -4,7 +4,7 @@ import {createArticle, getAllArticles, getArticleById, deleteArticle,updateArtic
 
 router.post('/createArticle',createArticle)
 router.get('/getAllArticles',getAllArticles)
-router.get('/getArticleById:id',getArticleById)
+router.get('/getArticleById/:id',getArticleById)
 router.delete('/deleteArticle/:id',deleteArticle)
 router.put('/editArticle',updateArticle)
 
