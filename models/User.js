@@ -1,5 +1,7 @@
 import mongoose from "mongoose"
 const {Schema, model} = mongoose
+import jwt from 'jsonwebtoken'
+const {sign} = jwt
 
 let userSchema= Schema({
     Name:{
@@ -18,4 +20,12 @@ let userSchema= Schema({
 
 })
 
-export const User= model('users',userSchema)
+userSchema.methods.generateAuthToken = function(){
+    const token = sign(
+        {_id: this._id, Password: this.Password},("happy_secret_key").trim()
+    )
+    return 'Bearer '+token
+}
+
+const User= model('users',userSchema)
+export default User
