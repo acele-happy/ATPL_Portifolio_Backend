@@ -3,7 +3,7 @@ const router = express.Router()
 import {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle} from '../controllers/article-contoller.js'
 
 import {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser} from '../controllers/user-controller.js'
-import {validateCreateUser,validateLogin,validateCreatenUpdateArticle} from '../validations/validate.js'
+import {validateCreateUser,validateLogin,validateCreatenUpdateArticle} from '../middlewares/validate.js'
 import authenticate from '../middlewares/auth.js'
 
 router.post('/createArticle',validateCreatenUpdateArticle,createArticle)
