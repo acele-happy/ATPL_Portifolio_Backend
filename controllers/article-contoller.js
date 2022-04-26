@@ -45,12 +45,17 @@ export const getArticleById = async(req,res)=>{
 export const deleteArticle= async (req,res)=>{
     try{
         let id= req.params.id
+        console.log("params "+id)
         if(id==undefined){
             return res.status(400).send("Undefined id")
         }
         let result = await Article.findByIdAndDelete(id)
-        return res.status(200).send("Article deleted!!")
+        return res.status(200).send({
+            message: "deleted!!",
+            data: result
+        })
     }catch(ex){
+        // console.log("eroorrr")
         res.status(500).send(ex.message);
     }
 }
@@ -68,7 +73,7 @@ export const updateArticle = async(req,res)=>{
         article.Picture = pic;
         article.Content = content
         await article.save()
-        return res.status(200).send("Article created!!"+ article)
+        return res.status(200).send("Article updated!!"+ article)
     }catch(err){
         res.status(500).send(err.message);
 

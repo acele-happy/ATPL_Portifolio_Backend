@@ -7,19 +7,26 @@ const {pick} = lodash
 
 export const signup = async(req,res)=>{
     try{
-        let user= new User(
+
+      let user = await User.findOne({Email: req.body.Email})
+
+      if(user){
+        return res.send("Email already exist")
+      }
+
+        let newuser= new User(
             pick(req.body,[
             "Name",
             "Email",
             "Password"
         ])
         )
-
-        await user.save()
+        
+        await newuser.save()
         return res.status(201).send({
             message:
               "Registered successfully.",
-              user
+            user: newuser
           });
     }catch(e){
         res.status(400).send("Error!!!")
@@ -27,43 +34,58 @@ export const signup = async(req,res)=>{
 }
 
 export const loginAsAdmin = async (req, res) => {
-  try {
-    let user = User.findOne({ Email: req.body.Email });
-    if (!user) {
-      res.status(400).send("Invalid email or password!!");
+  try{
+    let user = await User.findOne({ Email: req.body.Email });
+   
+    if (!user){
+     return res.status(400).send("Invalid email or Password !!");
     }
     let email = req.body.Email;
-    if (email != "acele4444@gmail.com") {
-      res.status(400).send("Invalid email or password!!");
+    if (email != "acele@gmail.com"){
+     return res.status(400).send("Invalid email or Password !!");
     }
-    let validPassword = compare(req.body.Password, user.Password);
-    if (!validPassword) {
-      res.status(400).send("Invalid email or password!!");
+  
+    let validPassword= false
+    if(req.body.Password === user.Password){
+      validPassword=true
     }
-  } catch (e) {
-    res.status(500).send("Error!!");
+ 
+    if(!validPassword) {
+      return res.status(400).send("Invalid email or Password !!");
+    }
+
+    const token = user.generateAuthToken()
+    return res.header("Authorization",token).send({
+      message:"Welcome to admin dashboard",
+      token:token
+    })
+  }catch(e){
+   return res.status(500).send("Error!!"+e);
   }
 };
 
-export const loginAsUser = async (req, res) => {
-  try {
-    let user = User.findOne({ Email: req.body.Email });
-    if (!user) {
-      res.status(400).send("Invalid email or password!!");
+
+export const loginAsUser = async(req,res) => {
+  try{
+    let user = await User.findOne({Email: req.body.Email});
+    if(!user){
+      res.status(400).send("Invalid email");
     }
 
-    let validPassword = compare(req.body.Password, user.Password);
-    if (!validPassword) {
-      res.status(400).send("Invalid email or password!!");
+    let validPassword= compare(req.body.Password, user.Password)
+
+    if(!validPassword) {
+      res.status(400).send("invalid password!!");
     }
 
     const token = user.generateAuthToken();
-    res.header("Authorization", token).send({
+    return res.header("Authorization", token).send({
       status: 200,
       message: "Login Successful",
       data: user,
+      token: token
     });
-  } catch (e) {
+  }catch (e) {
     res.status(400).send("Error!!");
   }
 };
@@ -79,7 +101,6 @@ export const getAllUsers = async(req,res)=>{
 
 export const getUserById = async(req,res)=>{
   try{
-    console.log("req.params.id")
     const user = await User.findById(req.params.id)
     return res.status(200).send(user)
   }catch(ex){

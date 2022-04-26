@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "ATPL My Brand Portifolio Backed \n\nMade with ❤️ by Acele Happy",
+        "description": "ATPL My Brand Portifolio Backend \n\nMade with ❤️ by Acele Happy",
         "version": "1.0.0",
         "title": "ATPL Portifolio Backend",
         "termsOfService": "http://swagger.io/terms/",
