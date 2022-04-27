@@ -1,12 +1,13 @@
 import express from 'express'
 const router = express.Router()
-import {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle} from '../controllers/article-contoller.js'
+import {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle,addComment} from '../controllers/article-contoller.js'
 
 import {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser} from '../controllers/user-controller.js'
 import {validateCreateUser,validateLogin,validateCreatenUpdateArticle} from '../middlewares/validate.js'
 import authenticate from '../middlewares/auth.js'
 
 router.post('/createArticle',authenticate, validateCreatenUpdateArticle,createArticle)
+router.post('/comment/:id',authenticate,addComment)
 router.get('/getAllArticles',getAllArticles)
 router.get('/getArticleById/:id',getArticleById)
 router.delete('/deleteArticle/:id',authenticate,deleteArticle)

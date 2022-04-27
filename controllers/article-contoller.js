@@ -83,13 +83,13 @@ export const updateArticle = async(req,res)=>{
 
 export const addComment= async(req,res)=>{
    try{
-    let commenter = req.User._id
+    // let commenter = req.User._id
+    // console.log(req.body.user._id)
     let content= req.body.content
     let articleId= req.params.id
 
 
     let comment={
-        userId: commenter,
         content: content,
         date: Date.now()
     }

@@ -20,6 +20,11 @@ const articleSchema = new Schema({
             content:{type:String, required: true},
             date:{type: Date}
         }
-    ]
+    ],
+    Likes:[],
+    CreatedAt:{
+        type: Date,
+        default: Date.now()
+    }
 })
 export const Article = model("article",articleSchema)
