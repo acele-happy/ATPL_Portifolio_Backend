@@ -3,10 +3,12 @@ import {Article} from '../models/Article.js'
 export const createArticle = async (req,res)=>{
    try{
     let pic = req.body.Picture
+    let title = req.body.Title
     let content = req.body.Content
     // console.log("my piccc "+pic)
     let article = new Article({
         Picture: pic,
+        Title: title,
         Content: content
     })
 
@@ -62,15 +64,13 @@ export const deleteArticle= async (req,res)=>{
 
 export const updateArticle = async(req,res)=>{
     try{
-        let id= req.params.id
-        if(id==undefined){
-            return res.status(400).send("Undefined id")
-        }
-        const  pic = req.Picture
-        const  content = req.Content
-        let  article = await Article.findById(id)
+        const  pic = req.body.Picture
+        const title= req.body.Title
+        const  content = req.body.Content
+        let  article = await Article.findById(req.params.id)
 
         article.Picture = pic;
+        article.Title = title
         article.Content = content
         await article.save()
         return res.status(200).send("Article updated!!"+ article)

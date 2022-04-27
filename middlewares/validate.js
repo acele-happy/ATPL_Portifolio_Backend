@@ -46,6 +46,7 @@ export const validateLogin = async(req,res,next)=>{
 export const validateCreatenUpdateArticle = (req,res,next)=>{
     const schema = Joi.object({
         Picture: Joi.string().required().label("Picture"),
+        Title: Joi.string().required().label("Title"),
         Content: Joi.string().min(50).required().label("Content")
     })
 

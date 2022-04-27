@@ -22,7 +22,7 @@ let userSchema= Schema({
 
 userSchema.methods.generateAuthToken = function(){
     const token = sign(
-        {_id: this._id, Password: this.Password},("happy_secret_key").trim()
+        {_id: this._id, Password: this.Password},(process.env.JWT_SECRET).trim()
     )
     return 'Bearer '+token
 }
