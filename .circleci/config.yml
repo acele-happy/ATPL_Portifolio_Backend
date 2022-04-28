@@ -1,8 +1,16 @@
-# Template:
-[![acele-happy](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backed.svg?style=shield)](https://app.circleci.com/pipelines/github/acele-happy)
-
-# Example:
-[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
-
-# Example for specific branch:
-[![CircleCI](https://circleci.com/gh/circleci/circleci-docs/tree/teesloane-patch-5.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs/?branch=teesloane-patch-5)
+version: 2.1
+jobs:
+  build_and_test: # this can be any name you choose
+    docker:
+      - image: cimg/node:17.2.0
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm run test
+          name: Run tests
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
