@@ -7,7 +7,7 @@ import {validateCreateUser,validateLogin,validateCreatenUpdateArticle} from '../
 import authenticate from '../middlewares/auth.js'
 
 router.post('/createArticle',authenticate, validateCreatenUpdateArticle,createArticle)
-router.post('/comment/:id',authenticate,addComment)
+router.patch('/comment/:id',authenticate,addComment)
 router.get('/getAllArticles',getAllArticles)
 router.get('/getArticleById/:id',getArticleById)
 router.delete('/deleteArticle/:id',authenticate,deleteArticle)
