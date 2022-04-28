@@ -47,7 +47,6 @@ export const getArticleById = async(req,res)=>{
 export const deleteArticle= async (req,res)=>{
     try{
         let id= req.params.id
-        console.log("params "+id)
         if(id==undefined){
             return res.status(400).send("Undefined id")
         }
