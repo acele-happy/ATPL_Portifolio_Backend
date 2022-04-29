@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.7.0
   heroku: circleci/heroku@1.2.6
+
 jobs:
   build_and_test:
     docker:
@@ -17,22 +18,25 @@ jobs:
           root: ~/project
           paths:
             - .
+
 deploy:
     docker:
       - image: cimg/node:17.2.0
     steps:
       - attach_workspace:
           at: ~/project
-      - heroku/deploy-via-git:
+      - heroku/deploy-via-git: 
           force: true
+
 workflows:
   on_commit:
     jobs:
       - build_and_test
+
   nightly:
     triggers:
       - schedule:
-          cron: "0 0 * * *"
+          cron: "0 0 * * *"       
           filters:
             branches:
               only:
