@@ -1,4 +1,4 @@
-version: 2.1
+version: 16.13.0
 
 orbs:
   node: circleci/node@3.0.0
@@ -62,7 +62,7 @@ jobs:
           destination: coverage
 
 workflows:
-  version: 2.1
+  version: 16.13.0
   build_and_test:
     jobs:
       - build
