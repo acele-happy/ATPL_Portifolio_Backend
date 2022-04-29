@@ -47,7 +47,6 @@ export const getArticleById = async(req,res)=>{
 export const deleteArticle= async (req,res)=>{
     try{
         let id= req.params.id
-        console.log("params "+id)
         if(id==undefined){
             return res.status(400).send("Undefined id")
         }
@@ -95,6 +94,9 @@ export const addComment= async(req,res)=>{
     }
 
     let article= await Article.findById(articleId)
+    if(!article){
+        return res.status(404).send("Article no found!!")
+    }
     article.Comments.push(comment)
     article.save()
     return res.json({message: "comment added successfully", status: 201, data: article})
