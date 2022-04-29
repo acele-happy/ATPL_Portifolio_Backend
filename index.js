@@ -10,7 +10,6 @@ import dotenv from 'dotenv'
 import swaggerUi from 'swagger-ui-express'
 
 //to use require in es6 you need to import it!
-
 import {createRequire} from 'module'
 const require = createRequire(import.meta.url)
 const swaggerDocument = require('./swagger.json')
