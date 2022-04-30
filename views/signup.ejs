@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="forms.css" />
+  </head>
+  <body>
+    <div class="container" id="cont">
+      <div class="left">
+        <h2>SIGNUP</h2>
+        <p>Create Your Own Account To Acele's Portifolio!!</p>
+        <div class="circle"></div>
+        <div class="success-div" id="success"></div>
+      </div>
+      <!-- <div class="right"> -->
+      <form action="/signup" id="form" class="form" method="POST">
+        <div class="input-ctrl" id="input-ctrl">
+          <input type="text" name="Name" id="Name" placeholder="Full Name" />
+          <div class="error"></div>
+        </div>
+        <div class="input-ctrl" id="input-ctrl">
+          <input type="email" name="Email" id="Email" placeholder="Email" />
+          <div class="error"></div>
+        </div>
+        <div class="input-ctrl" id="input-ctrl">
+          <input type="password" name="Password" id="Password" placeholder="Password" />
+          <div class="error"></div>
+        </div>
+        <button class="btn" type="submit">SIGNUP</button>
+        <p class="p-mobile">
+          Already have account?
+          <a href="/login" class="login-link">LOGIN</a>
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

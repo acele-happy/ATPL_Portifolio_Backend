@@ -23,6 +23,7 @@ export const signup = async(req,res)=>{
         )
         
         await newuser.save()
+        console.log(newuser)
         return res.status(201).send({
             message:
               "Registered successfully.",
@@ -54,11 +55,12 @@ export const loginAsAdmin = async (req, res) => {
       return res.status(400).send("Invalid email or Password !!");
     }
 
-    const token = user.generateAuthToken()
-    return res.header("Authorization",token).send({
-      message:"Welcome to admin dashboard",
-      token:token
-    })
+    // const token = user.generateAuthToken()
+    // return res.header("Authorization",token).send({
+    //   message:"Welcome to admin dashboard",
+    //   token:token
+    // })
+    res.redirect('dashboard.html')
   }catch(e){
    return res.status(500).send("Error!!"+e);
   }
