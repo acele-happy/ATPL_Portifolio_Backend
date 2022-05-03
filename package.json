@@ -12,20 +12,13 @@
     "type": "git",
     "url": "git+https://github.com/acele-happy/ATPL_Portifolio_Backed.git"
   },
-  "keywords": [
-    "coverage",
-    "coveralls"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/acele-happy/ATPL_Portifolio_Backed/issues"
   },
   "homepage": "https://github.com/acele-happy/ATPL_Portifolio_Backed#readme",
-
-  "bin":{
-    "coveralls":"./bin/coveralls.js"
-  },
 
   "dependencies": {
     "bcrypt": "^5.0.1",
