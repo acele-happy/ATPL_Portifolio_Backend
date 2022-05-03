@@ -7,6 +7,10 @@
 
 [![CircleCI](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend.svg?style=shield)](https://circleci.com/gh/circleci/circleci-docs)
 
+# node-coveralls
+
+[![Build Status][ci-image]][ci-url] [![Coverage Status][coveralls-image]][coveralls-url]
+
 ### Installation
 
 1. clone this repo
