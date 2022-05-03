@@ -49,40 +49,35 @@
                     {
                         "in":"formData",
                         "name":"Picture",
-                        "description":"name of the property(eg, MakuzaPeacePlaza)",
+                        "description":"Picture of The article",
                         "type":"string",
                         "required":"true"
                     },
                     {
                         "in":"formData",
                         "name":"Title",
-                        "description":"latitude of the property",
+                        "description":"title for the article",
                         "type":"string",
                         "required":"true"
                     },
                     {
                         "in":"formData",
                         "name":"Content",
-                        "description":"longitude of the property",
+                        "description":"The whole content of the article(not less than 200 words)",
                         "type":"string",
                         "required":"true"
                     },
                     {
                         "in":"formData",
                         "name":"Comments",
-                        "description":"comments of the property",
-                        "type":"string",
-                        "required":"true"
+                        "description":"comments of the article",
+                        "type":"string"
                     },
                     {
                         "in":"formData",
                         "name":"Likes",
-                        "description":"likes of the property",
-                        "type":"array",
-                        "items":{
-                            "type":"file"
-                        },
-                        "required":"true"
+                        "description":"likes of the article",
+                        "type":"array"
                     }
                 ],
                 "responses": {
@@ -127,7 +122,7 @@
                     "ARTICLE OPERATIONS"
                 ],
                 "summary": "Get article by id",
-                "description": "one property",
+                "description": "one article",
                 "produces": [
                     "application/json"
                 ],
@@ -158,8 +153,8 @@
                 "tags": [
                     "ARTICLE OPERATIONS"
                 ],
-                "summary": "delete one property",
-                "description": "delete one property",
+                "summary": "delete one article",
+                "description": "delete one article",
                 "produces": [
                     "application/json"
                 ],
@@ -174,7 +169,7 @@
                     {
                         "in":"path",
                         "name":"id",
-                        "description":"id of the property",
+                        "description":"id of the article",
                         "type":"string",
                         "required":"true"
                     }
@@ -200,8 +195,8 @@
                 "tags": [
                     "ARTICLE OPERATIONS"
                 ],
-                "summary": "Get properties as user",
-                "description": "only for sale properties",
+                "summary": "Edit The Article",
+                "description": "edit the article",
                 "produces": [
                     "application/json"
                 ],
@@ -216,21 +211,21 @@
                     {
                         "in":"formData",
                         "name":"Picture",
-                        "description":"name of the property(eg, MakuzaPeacePlaza)",
+                        "description":"Picture of the article",
                         "type":"string",
                         "required":"true"
                     },
                     {
                         "in":"formData",
                         "name":"Title",
-                        "description":"latitude of the property",
+                        "description":"title of the article",
                         "type":"string",
                         "required":"true"
                     },
                     {
                         "in":"formData",
                         "name":"Content",
-                        "description":"longitude of the property",
+                        "description":"content of the article",
                         "type":"string",
                         "required":"true"
                     }
@@ -253,8 +248,8 @@
                 "tags": [
                     "ARTICLE OPERATIONS"
                 ],
-                "summary": "Get nearby properties",
-                "description": "Get nearby properties",
+                "summary": "comment on the article",
+                "description": "comment on the article",
                 "produces": [
                     "application/json"
                 ],
@@ -263,6 +258,13 @@
                         "in":"header",
                         "name":"Authorization",
                         "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"articleId",
+                        "description":"The id of article",
                         "type":"string",
                         "required":"true"
                     },
@@ -295,8 +297,8 @@
                 "tags": [
                     "ARTICLE OPERATIONS"
                 ],
-                "summary": "Get properties as owner",
-                "description": "All properties including sold and for sale",
+                "summary": "Like or Unlike article",
+                "description": "Like/Unlike article",
                 "produces": [
                     "application/json"
                 ],
@@ -332,7 +334,7 @@
                     "USER OPERATIONS"
                 ],
                 "summary": "Sign up to my brand portifolio",
-                "description": "All properties including sold and for sale",
+                "description": "Create account to my brand",
                 "produces": [
                     "application/json"
                 ],
@@ -378,7 +380,7 @@
                     "USER OPERATIONS"
                 ],
                 "summary": "login to my brand portifolio",
-                "description": "All properties including sold and for sale",
+                "description": "Login to my brand portifolio",
                 "produces": [
                     "application/json"
                 ],
@@ -419,7 +421,7 @@
                     "USER OPERATIONS"
                 ],
                 "summary": "login to my brand portifolio",
-                "description": "All properties including sold and for sale",
+                "description": "Login as Admin",
                 "produces": [
                     "application/json"
                 ],
@@ -459,7 +461,7 @@
                     "USER OPERATIONS"
                 ],
                 "summary": "Get all users",
-                "description": "All properties including sold and for sale",
+                "description": "Get all Users",
                 "produces": [
                     "application/json"
                 ],
@@ -484,8 +486,8 @@
                 "tags": [
                     "USER OPERATIONS"
                 ],
-                "summary": "Sign up to my brand portifolio",
-                "description": "All properties including sold and for sale",
+                "summary": "Get user by id",
+                "description": "Get user by id",
                 "produces": [
                     "application/json"
                 ],
