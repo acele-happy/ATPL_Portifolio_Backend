@@ -6,7 +6,7 @@
 ### Badges
 
 [![CircleCI](https://circleci.com/gh/Byiringiro-saad/My_Brand_Backend.svg?style=shield)](https://circleci.com/gh/circleci-docs)
-[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/acele-happy/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/raw/ATPL_Portifolio_Backend__heads_main.json)]
+[!Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/acele-happy/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/raw/ATPL_Portifolio_Backend__heads_main.json)
 
 ### Installation
 
