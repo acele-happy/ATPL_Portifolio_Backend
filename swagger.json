@@ -1,129 +1,335 @@
 {
-    "swagger":"2.0",
-    "info":{
-        "version": "1.1.0",
-        "title":"My Portifolio APis",
-        "description":"ATPL My Brand Portifolio APIs"
-    },
-    "host":"localhost:4040",
-    "basePath":"/",
-    "schemes":[
-        "https",
-        "http"
-    ],
-    "securityDefinitions": {
-        "Authorization": {
-          "type": "apiKey",
-          "name": "Authorization",
-          "description": "Value: Bearer ",
-          "in": "header",
-          "scheme": "bearer"
+    "swagger": "2.0",
+    "info": {
+        "description": "These are apis for my personal portifolio as a full stack developer \n\nMade with ❤️ by Acele Happy",
+        "version": "1.0.0",
+        "title": "ATPL Portifolio Backend",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "MY Brand Prtifolio",
+            "email": "acele444@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
-      },
-      "consumes": [
-        "application/json"
-      ],
-      "produces": [
-        "application/json"
-      ],
-      
-      "paths":{
-          "/signup":{
-              "post":{
-                  "tags":[
-                      "User"
-                  ],
-                  "description":"",
-                  "parameters":[
-                      {
-                          "name":"obj",
-                          "in":"body",
-                          "required": true,
-                          "schema":{
-                              "$ref":"#/definitions/User"
-                          }
-                      }
-                  ],
-                  "responses":{
-                      "201":{
-                          "description":"Account created successfully"
-                      },
-                      "409":{
-                          "description":"User already exist"
-                      },
-                      "422":{
-                          "description":"Unprocessable Entity"
-                      }
-                  }
-              }
-          },
-          "/loginAsAdmin":{
-              "post":{
-                  "tags":["User"],
-                  "description":"",
-                  "parameters":[{
-                      "name":"obj",
-                      "in":"body",
-                      "required": true,
-                      "schema":{
-                          "$ref":"#/definitions/User"
-                      }
-                  }],
-                  "responses":{
-                      "200":{
-                          "description":"Logged in successfully"
-                      }
-                  }
-              }
-          },
-
-          "/loginAsUser":{
-              "post":{
-                  "tags":["User"],
-                  "description":"",
-                  "parameters":[{
-                      "name":"obj",
-                      "in":"body",
-                      "required":true,
-                      "schema":{"$ref":"#/definitions/User"}
-                  }
+    },
+    "tags": [
+        {
+            "name": "ARTICLE OPERATIONS",
+            "description": "All Article operations"
+        },
+        {
+            "name": "USER OPERATIONS",
+            "description": "Operations on user management and profile"
+        }
+    ],
+    "paths":{
+        "/create Article": {
+            "post": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
                 ],
-                "responses":{
-                    "description":"Logged in successfully"
+                "summary": "Register a new article",
+                "description": "Register a new article",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Picture",
+                        "description":"name of the property(eg, MakuzaPeacePlaza)",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Title",
+                        "description":"latitude of the property",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Content",
+                        "description":"longitude of the property",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Comments",
+                        "description":"comments of the property",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Likes",
+                        "description":"likes of the property",
+                        "type":"array",
+                        "items":{
+                            "type":"file"
+                        },
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
                 }
-              }
-          }
-      },
-
-      "/getUserById/:id":{
-          "get":{
-              "tags":[
-                "User"
-              ],
-              "description":"",
-              "parameters":[{
-                  "name":"id",
-                  "in":"path",
-                  "type":"string",
-                  "required":true
-              }],
-              "responses":{
-                  "200":{
-                      "description":"OK"            }
-                      ,
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-              },
-
-              "security":[
-                  {
-                      "Authorization":[]
-                  }
-              ]
-          }
-      }
+            }
+        },
+        "/getAllArticles":{
+            "get" : {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary":"get all articles",
+                "produces":["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getArticleById/{id}": {
+            "get": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "Get article by id",
+                "description": "one property",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the article",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/deleteArticle/{id}": {
+            "delete": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "delete one property",
+                "description": "delete one property",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the property",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/updateArticle": {
+            "put": {
+                "tags": [
+                    "PROPERTY OPERATIONS"
+                ],
+                "summary": "Get properties as user",
+                "description": "only for sale properties",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    } ,{
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Picture",
+                        "description":"name of the property(eg, MakuzaPeacePlaza)",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Title",
+                        "description":"latitude of the property",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Content",
+                        "description":"longitude of the property",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/addComment": {
+            "post": {
+                "tags": [
+                    "PROPERTY OPERATIONS"
+                ],
+                "summary": "Get nearby properties",
+                "description": "Get nearby properties",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"content",
+                        "description":"content location of the property",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/likeUnlikeArticle": {
+            "post": {
+                "tags": [
+                    "PROPERTY OPERATIONS"
+                ],
+                "summary": "Get properties as owner",
+                "description": "All properties including sold and for sale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
 }
