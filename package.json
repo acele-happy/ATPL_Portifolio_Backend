@@ -33,6 +33,7 @@
     "mocha": "^9.2.2",
     "mongoose": "^6.2.10",
     "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.3.0"
   },
