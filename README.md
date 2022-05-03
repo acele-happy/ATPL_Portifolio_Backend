@@ -5,7 +5,7 @@
 
 <p>Test Badge</p>
 
-[![CircleCI](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend.svg?style=shield)](https://circleci.com/gh/circleci/circleci-docs)
+[![CircleCI](https://circleci.com/gh/Byiringiro-saad/My_Brand_Backend.svg?style=shield)](https://circleci.com/gh/circleci-docs)
 
 # node-coveralls
 
