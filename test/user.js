@@ -29,7 +29,7 @@ describe("Test User APIs", () => {
     let user = {
       Email: "acele@gmail.com",
       Password: "acelelkjh",
-    };
+    }
     it("It should login admin only!", async () => {
       chai
         .request(server)

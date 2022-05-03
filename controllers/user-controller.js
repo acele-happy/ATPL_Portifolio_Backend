@@ -55,12 +55,12 @@ export const loginAsAdmin = async (req, res) => {
       return res.status(400).send("Invalid email or Password !!");
     }
 
-    // const token = user.generateAuthToken()
-    // return res.header("Authorization",token).send({
-    //   message:"Welcome to admin dashboard",
-    //   token:token
-    // })
-    res.redirect('dashboard.html')
+    const token = user.generateAuthToken()
+    return res.header("Authorization",token).send({
+      message:"Welcome to admin dashboard",
+      token:token
+    })
+    // res.redirect('dashboard.html')
   }catch(e){
    return res.status(500).send("Error!!"+e);
   }
