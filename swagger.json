@@ -198,7 +198,7 @@
         "/updateArticle": {
             "put": {
                 "tags": [
-                    "PROPERTY OPERATIONS"
+                    "ARTICLE OPERATIONS"
                 ],
                 "summary": "Get properties as user",
                 "description": "only for sale properties",
@@ -257,7 +257,7 @@
         "/addComment": {
             "post": {
                 "tags": [
-                    "PROPERTY OPERATIONS"
+                    "ARTICLE OPERATIONS"
                 ],
                 "summary": "Get nearby properties",
                 "description": "Get nearby properties",
@@ -299,7 +299,7 @@
         "/likeUnlikeArticle": {
             "post": {
                 "tags": [
-                    "PROPERTY OPERATIONS"
+                    "ARTICLE OPERATIONS"
                 ],
                 "summary": "Get properties as owner",
                 "description": "All properties including sold and for sale",
