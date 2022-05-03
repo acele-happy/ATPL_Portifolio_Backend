@@ -9,7 +9,7 @@
 
 # node-coveralls
 
-[![Build Status][ci-image]][ci-url] [![Coverage Status][coveralls-image]][coveralls-url]
+[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/acele-happy/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/raw/ATPL_Portifolio_Backend__heads_main.json)]
 
 ### Installation
 
