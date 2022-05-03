@@ -212,12 +212,6 @@
                         "description":"JWT Token of the user",
                         "type":"string",
                         "required":"true"
-                    } ,{
-                        "in":"header",
-                        "name":"Authorization",
-                        "description":"JWT Token of the user",
-                        "type":"string",
-                        "required":"true"
                     },
                     {
                         "in":"formData",
@@ -314,6 +308,186 @@
                         "type":"string",
                         "required":"true"
                     }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+
+        "/signup": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Sign up to my brand portifolio",
+                "description": "All properties including sold and for sale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"formData",
+                        "name":"Name",
+                        "description":"name of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Email",
+                        "description":"email of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Password",
+                        "description":"password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },"/loginAsUser": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "login to my brand portifolio",
+                "description": "All properties including sold and for sale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+          {
+                        "in":"formData",
+                        "name":"Email",
+                        "description":"email of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Password",
+                        "description":"password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/loginAsAdmin": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "login to my brand portifolio",
+                "description": "All properties including sold and for sale",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[{
+                        "in":"formData",
+                        "name":"Email",
+                        "description":"email of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Password",
+                        "description":"password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getAllUsers": {
+            "get": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Get all users",
+                "description": "All properties including sold and for sale",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getUserById/{id}": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Sign up to my brand portifolio",
+                "description": "All properties including sold and for sale",
+                "produces": [
+                    "application/json"
                 ],
                 "responses": {
                     "200": {
