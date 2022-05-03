@@ -1,45 +1,96 @@
-version: 2.1
-orbs:
-  node: circleci/node@4.7.0
-  heroku: circleci/heroku@1.2.6
+# version: 2.1
+# orbs:
+#   node: circleci/node@4.7.0
+#   heroku: circleci/heroku@1.2.6
+
+# jobs:
+#   build_and_test:
+#     docker:
+#       - image: cimg/node:17.2.0
+#     steps:
+#       - checkout
+#       - node/install-packages:
+#           pkg-manager: npm
+#       - run:
+#           command: npm run test
+#           name: Run tests
+#       - persist_to_workspace:
+#           root: ~/project
+#           paths:
+#             - .
+
+# deploy:
+#     docker:
+#       - image: cimg/node:17.2.0
+#     steps:
+#       - attach_workspace:
+#           at: ~/project
+#       - heroku/deploy-via-git: 
+#           force: true
+
+# workflows:
+#   on_commit:
+#     jobs:
+#       - build_and_test
+
+#   nightly:
+#     triggers:
+#       - schedule:
+#           cron: "0 0 * * *"       
+#           filters:
+#             branches:
+#               only:
+#                 - master
+#     jobs:
+#       - build_and_test
+
+name: Tests
+on: [push, pull_request]
+env:
+  CI: true
 
 jobs:
-  build_and_test:
-    docker:
-      - image: cimg/node:17.2.0
+  test:
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [6, 8, 10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+
     steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          command: npm run test
-          name: Run tests
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+      - name: Clone repository
+        uses: actions/checkout@v2
 
-deploy:
-    docker:
-      - image: cimg/node:17.2.0
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install npm dependencies
+        run: npm install # switch to `npm ci` when Node.js 6 support is dropped
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test-cov
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: ${{matrix.os}}-node-${{ matrix.node }}
+          parallel: true
+
+  finish:
+    needs: test
+    runs-on: ubuntu-latest
     steps:
-      - attach_workspace:
-          at: ~/project
-      - heroku/deploy-via-git: 
-          force: true
-
-workflows:
-  on_commit:
-    jobs:
-      - build_and_test
-
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"       
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build_and_test
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
