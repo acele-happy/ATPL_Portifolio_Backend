@@ -19,6 +19,6 @@ router.get('/getAllUsers',authenticate,getAllUsers)
 router.get('/getUserById/:id',getUserById)
 router.post('/loginAsAdmin',validateLogin,loginAsAdmin)
 router.post('/loginAsUser',validateLogin,loginAsUser)
-router.delete('/deleteUser/:id',validateLogin,deleteUser)
+router.delete('/deleteUser/:id',authenticate,deleteUser)
 
 export default router

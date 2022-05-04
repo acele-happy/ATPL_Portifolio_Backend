@@ -115,9 +115,9 @@ export const deleteUser = async(req,res)=>{
     let user = await User.findByIdAndDelete(req.params.id)
     return res.status(200).send({
       message: "deleted!!",
-      data: result
+      data: user
   })
   }catch(e){
-    res.status(400).send("Error!!")
+    return res.status(400).send("Error!! "+e)
   }
 }

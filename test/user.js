@@ -81,7 +81,7 @@ describe("Test User APIs", () => {
   });
 
   describe("GET /getUserById/:id", () => {
-    let id = "62629e44b6676031fcb8c98c";
+    let id = "62629d15ae1d2ef1f46a417a";
     let token =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOWU0NGI2Njc2MDMxZmNiOGM5OGMiLCJQYXNzd29yZCI6ImFjZWxlbGtqaCIsImlhdCI6MTY1MDk3MzY1MX0.UnKrOFHbpf6eoVZa3qLN0zOO5ab_ndt2QKR5wl7YJuk";
 
@@ -99,7 +99,7 @@ describe("Test User APIs", () => {
   });
 
   describe("DELETE /deleteUser/:id",()=>{
-    let id = "62629e44b6676031fcb8c98c";
+    let id = "62629d15ae1d2ef1f46a417a";
     let token =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOWU0NGI2Njc2MDMxZmNiOGM5OGMiLCJQYXNzd29yZCI6ImFjZWxlbGtqaCIsImlhdCI6MTY1MDk3MzY1MX0.UnKrOFHbpf6eoVZa3qLN0zOO5ab_ndt2QKR5wl7YJuk";
 
