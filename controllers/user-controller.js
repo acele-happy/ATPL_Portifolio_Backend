@@ -23,6 +23,7 @@ export const signup = async(req,res)=>{
         )
         
         await newuser.save()
+        console.log(newuser)
         return res.status(201).send({
             message:
               "Registered successfully.",
@@ -59,6 +60,7 @@ export const loginAsAdmin = async (req, res) => {
       message:"Welcome to admin dashboard",
       token:token
     })
+    // res.redirect('dashboard.html')
   }catch(e){
    return res.status(500).send("Error!!"+e);
   }
@@ -105,5 +107,17 @@ export const getUserById = async(req,res)=>{
     return res.status(200).send(user)
   }catch(ex){
     res.status(400).send("Error!!")
+  }
+}
+
+export const deleteUser = async(req,res)=>{
+  try{
+    let user = await User.findByIdAndDelete(req.params.id)
+    return res.status(200).send({
+      message: "deleted!!",
+      data: user
+  })
+  }catch(e){
+    return res.status(400).send("Error!! "+e)
   }
 }

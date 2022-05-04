@@ -9,14 +9,14 @@ chai.use(chaihttp);
 describe("Article APIs", () => {
   //Test the Get Route
   describe("GET /getAllArticles", () => {
-    it("It should get all articles", async() => {
+    it("It should get all articles", (done) => {
       chai
         .request(server)
         .get("/getAllArticles")
         .end((err, response) => {
           response.should.have.status(200);
           response.should.be.a("object");
-          // done();
+          done();
         });
     });
   });
@@ -24,7 +24,7 @@ describe("Article APIs", () => {
   //   // GET by {id} Test
 
   describe("GET /getArticleById/:id", () => {
-    it("It Should return an article with specified id", async() => {
+    it("It Should return an article with specified id", (done) => {
       const id = "6250726fd94f2cc1b868de19";
       chai
         .request(server)
@@ -33,13 +33,14 @@ describe("Article APIs", () => {
           response.should.have.status(200);
           response.should.be.a("object");
           // response.body.should.have.property("data");
+          done()
         });
     });
   });
 
   // // Test POST route
 describe("POST /createArticle", () => {
-  it("It should create new article", async() => {
+  it("It should create new article", (done) => {
     const article = {
       Picture: "test.jpg",
       Title: "Testing Title",
@@ -58,6 +59,7 @@ describe("POST /createArticle", () => {
       .end((err, response) => {
         response.should.have.status(201);
         response.should.be.a("object");
+        done()
       });
   });
 });
@@ -65,7 +67,7 @@ describe("POST /createArticle", () => {
 // //PATCH Routes
 
 describe("PATCH /comment/:id", () => {
-  it("It should comment on an article with specified id", async() => {
+  it("It should comment on an article with specified id", (done) => {
     let id = "6268f0c78d2dca6911ab4ed2";
     let comment={
      content : "test comment added!!",
@@ -81,6 +83,7 @@ describe("PATCH /comment/:id", () => {
       .end((err, response) => {
         response.should.have.status(200);
         response.should.be.a("object");
+        done()
       });
   });
 });
@@ -88,7 +91,7 @@ describe("PATCH /comment/:id", () => {
 // //DELETE route
 
 describe("DELETE /deleteArticle/:id", () => {
-  it("I should delete an article with specified id", async() => {
+  it("I should delete an article with specified id", (done) => {
     const id = "62684de6261dc34d4036d513";
     const token =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjYyOWU0NGI2Njc2MDMxZmNiOGM5OGMiLCJQYXNzd29yZCI6ImFjZWxlbGtqaCIsImlhdCI6MTY1MDk3MzY1MX0.UnKrOFHbpf6eoVZa3qLN0zOO5ab_ndt2QKR5wl7YJuk";
@@ -100,6 +103,7 @@ describe("DELETE /deleteArticle/:id", () => {
       .end((err, response) => {
         response.should.have.status(200);
         response.should.be.a("object");
+        done()
       });
   });
 });

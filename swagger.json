@@ -1,129 +1,534 @@
 {
-    "swagger":"2.0",
-    "info":{
-        "version": "1.1.0",
-        "title":"My Portifolio APis",
-        "description":"ATPL My Brand Portifolio APIs"
-    },
-    "host":"localhost:4040",
-    "basePath":"/",
-    "schemes":[
-        "https",
-        "http"
-    ],
-    "securityDefinitions": {
-        "Authorization": {
-          "type": "apiKey",
-          "name": "Authorization",
-          "description": "Value: Bearer ",
-          "in": "header",
-          "scheme": "bearer"
+    "swagger": "2.0",
+    "info": {
+        "description": "These are apis for my personal portifolio as a full stack developer \n\nMade with ❤️ by Acele Happy",
+        "version": "1.0.0",
+        "title": "ATPL Portifolio Backend",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "MY Brand Prtifolio",
+            "email": "acele444@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
-      },
-      "consumes": [
-        "application/json"
-      ],
-      "produces": [
-        "application/json"
-      ],
-      
-      "paths":{
-          "/signup":{
-              "post":{
-                  "tags":[
-                      "User"
-                  ],
-                  "description":"",
-                  "parameters":[
-                      {
-                          "name":"obj",
-                          "in":"body",
-                          "required": true,
-                          "schema":{
-                              "$ref":"#/definitions/User"
-                          }
-                      }
-                  ],
-                  "responses":{
-                      "201":{
-                          "description":"Account created successfully"
-                      },
-                      "409":{
-                          "description":"User already exist"
-                      },
-                      "422":{
-                          "description":"Unprocessable Entity"
-                      }
-                  }
-              }
-          },
-          "/loginAsAdmin":{
-              "post":{
-                  "tags":["User"],
-                  "description":"",
-                  "parameters":[{
-                      "name":"obj",
-                      "in":"body",
-                      "required": true,
-                      "schema":{
-                          "$ref":"#/definitions/User"
-                      }
-                  }],
-                  "responses":{
-                      "200":{
-                          "description":"Logged in successfully"
-                      }
-                  }
-              }
-          },
-
-          "/loginAsUser":{
-              "post":{
-                  "tags":["User"],
-                  "description":"",
-                  "parameters":[{
-                      "name":"obj",
-                      "in":"body",
-                      "required":true,
-                      "schema":{"$ref":"#/definitions/User"}
-                  }
+    },
+    "tags": [
+        {
+            "name": "ARTICLE OPERATIONS",
+            "description": "All Article operations"
+        },
+        {
+            "name": "USER OPERATIONS",
+            "description": "Operations on user management and profile"
+        }
+    ],
+    "paths":{
+        "/createArticle": {
+            "post": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
                 ],
-                "responses":{
-                    "description":"Logged in successfully"
+                "summary": "Register a new article",
+                "description": "Register a new article",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Picture",
+                        "description":"Picture of The article",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Title",
+                        "description":"title for the article",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Content",
+                        "description":"The whole content of the article(not less than 200 words)",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
                 }
-              }
-          }
-      },
+            }
+        },
+        "/getAllArticles":{
+            "get" : {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary":"get all articles",
+                "produces":["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getArticleById/{id}": {
+            "get": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "Get article by id",
+                "description": "one article",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the article",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/deleteArticle/{id}": {
+            "delete": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "delete one article",
+                "description": "delete one article",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the article",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/updateArticle": {
+            "put": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "Edit The Article",
+                "description": "edit the article",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Picture",
+                        "description":"Picture of the article",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Title",
+                        "description":"title of the article",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"formData",
+                        "name":"Content",
+                        "description":"content of the article",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/addComment": {
+            "post": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "comment on the article",
+                "description": "comment on the article",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"articleId",
+                        "description":"The id of article",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"content",
+                        "description":"content location of the property",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/likeUnlikeArticle": {
+            "post": {
+                "tags": [
+                    "ARTICLE OPERATIONS"
+                ],
+                "summary": "Like or Unlike article",
+                "description": "Like/Unlike article",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
 
-      "/getUserById/:id":{
-          "get":{
-              "tags":[
-                "User"
-              ],
-              "description":"",
-              "parameters":[{
-                  "name":"id",
-                  "in":"path",
-                  "type":"string",
-                  "required":true
-              }],
-              "responses":{
-                  "200":{
-                      "description":"OK"            }
-                      ,
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-              },
-
-              "security":[
-                  {
-                      "Authorization":[]
-                  }
-              ]
-          }
-      }
+        "/signup": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Sign up to my brand portifolio",
+                "description": "Create account to my brand",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"formData",
+                        "name":"Name",
+                        "description":"name of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Email",
+                        "description":"email of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Password",
+                        "description":"password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },"/loginAsUser": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "login to my brand portifolio",
+                "description": "Login to my brand portifolio",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+          {
+                        "in":"formData",
+                        "name":"Email",
+                        "description":"email of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Password",
+                        "description":"password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/loginAsAdmin": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "login to my brand portifolio",
+                "description": "Login as Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[{
+                        "in":"formData",
+                        "name":"Email",
+                        "description":"email of the user",
+                        "type":"string",
+                        "required":"true"
+                    }, {
+                        "in":"formData",
+                        "name":"Password",
+                        "description":"password of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getAllUsers": {
+            "get": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Get all users",
+                "description": "Get all Users",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getUserById/{id}": {
+            "post": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Get user by id",
+                "description": "Get user by id",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/deleteUser/{id}": {
+            "delete": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Delete User with specified id",
+                "description": "Delete User with specified id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
 }
