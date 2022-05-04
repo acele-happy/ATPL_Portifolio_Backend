@@ -25,7 +25,7 @@
         }
     ],
     "paths":{
-        "/create Article": {
+        "/createArticle": {
             "post": {
                 "tags": [
                     "ARTICLE OPERATIONS"
@@ -66,18 +66,6 @@
                         "description":"The whole content of the article(not less than 200 words)",
                         "type":"string",
                         "required":"true"
-                    },
-                    {
-                        "in":"formData",
-                        "name":"Comments",
-                        "description":"comments of the article",
-                        "type":"string"
-                    },
-                    {
-                        "in":"formData",
-                        "name":"Likes",
-                        "description":"likes of the article",
-                        "type":"array"
                     }
                 ],
                 "responses": {
