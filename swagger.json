@@ -494,6 +494,41 @@
                     }
                 }
             }
+        },
+        "/deleteUser/{id}": {
+            "delete": {
+                "tags": [
+                    "USER OPERATIONS"
+                ],
+                "summary": "Delete User with specified id",
+                "description": "Delete User with specified id",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters":[
+                    {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Invalid data"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     }
 }
