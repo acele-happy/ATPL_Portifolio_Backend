@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 import {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle,addComment} from '../controllers/article-contoller.js'
 
-import {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser} from '../controllers/user-controller.js'
+import {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser,deleteUser} from '../controllers/user-controller.js'
 import {validateCreateUser,validateLogin,validateCreatenUpdateArticle} from '../middlewares/validate.js'
 import authenticate from '../middlewares/auth.js'
 
@@ -19,5 +19,6 @@ router.get('/getAllUsers',authenticate,getAllUsers)
 router.get('/getUserById/:id',getUserById)
 router.post('/loginAsAdmin',validateLogin,loginAsAdmin)
 router.post('/loginAsUser',validateLogin,loginAsUser)
+router.delete('/deleteUser/:id',validateLogin,deleteUser)
 
 export default router

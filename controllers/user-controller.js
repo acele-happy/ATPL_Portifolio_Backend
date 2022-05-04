@@ -109,3 +109,15 @@ export const getUserById = async(req,res)=>{
     res.status(400).send("Error!!")
   }
 }
+
+export const deleteUser = async(req,res)=>{
+  try{
+    let user = await User.findByIdAndDelete(req.params.id)
+    return res.status(200).send({
+      message: "deleted!!",
+      data: result
+  })
+  }catch(e){
+    res.status(400).send("Error!!")
+  }
+}

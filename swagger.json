@@ -40,6 +40,13 @@
                 ],
                 "parameters":[
                     {
+                        "in":"header",
+                        "name":"Authorization",
+                        "description":"JWT Token of the user",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
                         "in":"formData",
                         "name":"Picture",
                         "description":"Picture of The article",
