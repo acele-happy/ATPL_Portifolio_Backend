@@ -22,6 +22,7 @@
   "homepage": "https://github.com/acele-happy/ATPL_Portifolio_Backed#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "c8": "^7.11.2",
     "core-js": "^3.22.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
