@@ -4,8 +4,6 @@
 </div>
 
 ### Badges
-
-[![CircleCI](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend.svg?style=shield)](https://circleci.com/gh/circleci/circleci-docs)
 [![codecov.io](https://codecov.io/github/acele-happy/ATPL_Portifolio_Backend/coverage.svg?branch=main)](https://codecov.io/github/acele-happy/ATPL_Portifolio_Backend)
 
 ### Installation
