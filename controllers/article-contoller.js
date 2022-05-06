@@ -15,7 +15,7 @@ module.exports.createArticle = async (req,res)=>{
     await article.save()
     return res.status(201).send("Article created!!") 
    }catch(ex){
-        res.status(500).send(ex.message);
+        return res.status(500).send(ex.message);
    }
 }
 
@@ -27,7 +27,6 @@ module.exports.getAllArticles = async (req,res)=>{
         }
         return res.status(200).send(result)
     }catch(ex){
-        console.log("error")
        return res.status(500).send(ex.message);
     }
 }
@@ -57,7 +56,7 @@ module.exports.deleteArticle= async (req,res)=>{
         })
     }catch(ex){
         // console.log("eroorrr")
-        res.status(500).send(ex.message);
+        return res.status(500).send(ex.message);
     }
 }
 
