@@ -1,34 +1,23 @@
 version: 2.1
-orbs:
-  node: circleci/node@4.7.0
-  heroku: circleci/heroku@1.2.6
 
 jobs:
-  build_and_test:
+  deploy-config:
     docker:
-      - image: cimg/node:17.2.0
+      - image: circleci/python
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
-          command: npm run test
-          name: Run tests
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
-
-  deploy: # this can be any name you choose
-    docker:
-      - image: cimg/node:17.2.0
-    steps:
-      - attach_workspace:
-          at: ~/project
-      - heroku/deploy-via-git:
-          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
-
+          name: Test
+          command: |
+            echo GLOBAL_64=$(base64 -w 0 global-ci.yml) >> $BASH_ENV
+            while IFS= read -r repo
+              do
+                echo BLOB_SHA=$(curl --location --request GET "https://api.github.com/repos/$repo/contents/.circleci/config.yml" --header "Authorization: token ${GH_TOKEN}" --header "Accept: application/vnd.github.v3+json"|jq -r .sha) >> $BASH_ENV
+                source $BASH_ENV
+                curl --location --request PUT "https://api.github.com/repos/$repo/contents/.circleci/config.yml" --header "Authorization: token ${GH_TOKEN}" --header "Accept: application/vnd.github.v3+json" --data-raw "{\"message\":\"Global config update\", \"content\":\"$GLOBAL_64\", \"sha\":\"${BLOB_SHA}\"}"
+              done < "satellites.txt"
+          
 workflows:
-  test_my_app:
+  main:
     jobs:
-      - build_and_test
+      - deploy-config
