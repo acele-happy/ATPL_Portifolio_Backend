@@ -1,5 +1,5 @@
 {
-  "name": "atpl_portifolio_backed",
+  "name": "atpl_portifolio_backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -35,6 +35,7 @@
     "lodash": "^4.17.21",
     "mocha": "^9.2.2",
     "mongoose": "^6.2.10",
+    "node-fetch": "^3.2.4",
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
     "swagger-jsdoc": "^6.2.1",

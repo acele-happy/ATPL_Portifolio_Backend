@@ -23,14 +23,13 @@ export const signup = async(req,res)=>{
         )
         
         await newuser.save()
-        console.log(newuser)
         return res.status(201).send({
             message:
               "Registered successfully.",
             user: newuser
           });
     }catch(e){
-        res.status(400).send("Error!!!")
+       return res.status(400).send("Error!!!")
     }
 }
 
@@ -118,6 +117,6 @@ export const deleteUser = async(req,res)=>{
       data: user
   })
   }catch(e){
-    return res.status(400).send("Error!! "+e)
+   return res.status(400).send("Error!!")
   }
 }

@@ -7,6 +7,6 @@ mongoose.connect("mongodb+srv://portifolio-backeend:portifolio-backeend@cluster0
 .then(()=>{
     console.log("connected to db !!")
 })
-.catch(ex=>{
+.catch((ex)=>{
     console.log("failed to connect to db "+ex)
 })

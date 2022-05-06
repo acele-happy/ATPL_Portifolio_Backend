@@ -101,17 +101,16 @@ export const addComment= async(req,res)=>{
     article.save()
     return res.json({message: "comment added successfully", status: 201, data: article})
    }catch(e){
-    console.log(e);
         return res.json({message: "An error occured, try again", status: 500})
    }
 }
 
 export const likeUnlikeArticle = async(req,res)=>{
     try{
-        let articleId= req.params.id
-        let userId = req.User._id
+        const articleId= req.params.id
+        const userId = req.User._id
 
-        let article = Article.findById(articleId)
+        const article = Article.findById(articleId)
         if(!article){
             return res.json({message: "The property with the given id was not found", status: 400})
         }
