@@ -478,7 +478,7 @@
             }
         },
         "/getUserById/{id}": {
-            "post": {
+            "get": {
                 "tags": [
                     "USER OPERATIONS"
                 ],
