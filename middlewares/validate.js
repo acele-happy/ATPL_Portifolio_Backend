@@ -1,7 +1,7 @@
-import Joi from 'joi'
-import _ from "lodash"
+const Joi =require('joi')
+const _ =require("lodash")
 
-export const validateCreateUser = async(req,res,next)=>{
+module.exports.validateCreateUser = async(req,res,next)=>{
     try{
         const schema = Joi.object({
             Name: Joi.string().min(3).max(70).required().label("Name"),
@@ -21,7 +21,7 @@ export const validateCreateUser = async(req,res,next)=>{
     }
 }
 
-export const validateLogin = async(req,res,next)=>{
+module.exports.validateLogin = async(req,res,next)=>{
     try{
         const schema = Joi.object({
             Email: Joi.string().min(5).required().label("Email"),
@@ -43,7 +43,7 @@ export const validateLogin = async(req,res,next)=>{
 }
 //Article
 
-export const validateCreatenUpdateArticle = (req,res,next)=>{
+module.exports.validateCreatenUpdateArticle = (req,res,next)=>{
     const schema = Joi.object({
         Picture: Joi.string().required().label("Picture"),
         Title: Joi.string().required().label("Title"),

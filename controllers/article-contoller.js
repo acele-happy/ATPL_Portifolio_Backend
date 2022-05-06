@@ -1,6 +1,6 @@
-import {Article} from '../models/Article.js'
+const Article =require('../models/Article.js')
 
-export const createArticle = async (req,res)=>{
+module.exports.createArticle = async (req,res)=>{
    try{
     let pic = req.body.Picture
     let title = req.body.Title
@@ -19,7 +19,7 @@ export const createArticle = async (req,res)=>{
    }
 }
 
-export const getAllArticles = async (req,res)=>{
+module.exports.getAllArticles = async (req,res)=>{
     try{
         const result = await Article.find()
         if(result.length == 0){
@@ -32,7 +32,7 @@ export const getAllArticles = async (req,res)=>{
     }
 }
 
-export const getArticleById = async(req,res)=>{
+module.exports.getArticleById = async(req,res)=>{
     try{
         const result = await Article.findById(req.params.id)
         if(!result){
@@ -44,7 +44,7 @@ export const getArticleById = async(req,res)=>{
     }
 }
 
-export const deleteArticle= async (req,res)=>{
+module.exports.deleteArticle= async (req,res)=>{
     try{
         let id= req.params.id
         if(id==undefined){
@@ -61,7 +61,7 @@ export const deleteArticle= async (req,res)=>{
     }
 }
 
-export const updateArticle = async(req,res)=>{
+module.exports.updateArticle = async(req,res)=>{
     try{
         const  pic = req.body.Picture
         const title= req.body.Title
@@ -80,7 +80,7 @@ export const updateArticle = async(req,res)=>{
 }
 
 
-export const addComment= async(req,res)=>{
+module.exports.addComment= async(req,res)=>{
    try{
     // let commenter = req.User._id
     // console.log(req.body.user._id)
@@ -105,7 +105,7 @@ export const addComment= async(req,res)=>{
    }
 }
 
-export const likeUnlikeArticle = async(req,res)=>{
+module.exports.likeUnlikeArticle = async(req,res)=>{
     try{
         const articleId= req.params.id
         const userId = req.User._id

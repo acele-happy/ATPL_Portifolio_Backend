@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken'
+const jwt =require('jsonwebtoken')
 const {verify} = jwt
 
-export default function(req,res,next){
+module.exports= function(req,res,next){
     const token = req.header('Authorization')
     if(!token){
         return res.status(401).send("Access Denied! Login first")

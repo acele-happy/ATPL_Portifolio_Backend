@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+const mongoose =require("mongoose")
 const {Schema, model}= mongoose
 
 const articleSchema = new Schema({
@@ -27,4 +27,5 @@ const articleSchema = new Schema({
         default: Date.now()
     }
 })
-export const Article = model("article",articleSchema)
+const Article = model("article",articleSchema)
+module.exports = Article

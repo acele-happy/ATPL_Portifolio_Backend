@@ -1,10 +1,10 @@
-import express from 'express'
+const express =require( 'express')
 const router = express.Router()
-import {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle,addComment} from '../controllers/article-contoller.js'
+const {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle,addComment} =require( '../controllers/article-contoller.js')
 
-import {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser,deleteUser} from '../controllers/user-controller.js'
-import {validateCreateUser,validateLogin,validateCreatenUpdateArticle} from '../middlewares/validate.js'
-import authenticate from '../middlewares/auth.js'
+ const {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser,deleteUser} =require( '../controllers/user-controller.js')
+const {validateCreateUser,validateLogin,validateCreatenUpdateArticle} =require( '../middlewares/validate.js')
+const authenticate =require( '../middlewares/auth.js')
 
 router.post('/createArticle',authenticate, validateCreatenUpdateArticle,createArticle)
 router.patch('/comment/:id',authenticate,addComment)
@@ -21,4 +21,4 @@ router.post('/loginAsAdmin',validateLogin,loginAsAdmin)
 router.post('/loginAsUser',validateLogin,loginAsUser)
 router.delete('/deleteUser/:id',authenticate,deleteUser)
 
-export default router
+module.exports= router

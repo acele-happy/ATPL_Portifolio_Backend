@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "nodemon index.js",
     "test": "mocha --timeout 10000 --exit",
-    "coverage": "c8 npm test"
+    "coverage": "nyc --reporter=lcov --reporter=text npm test"
   },
   "repository": {
     "type": "git",

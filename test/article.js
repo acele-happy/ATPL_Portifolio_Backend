@@ -1,6 +1,6 @@
-import chai from "chai";
-import chaihttp from "chai-http";
-import server from "../index.js";
+const chai = require( "chai");
+const chaihttp = require( "chai-http");
+const server = require( "../index.js");
 
 //Assertion Style
 chai.should();

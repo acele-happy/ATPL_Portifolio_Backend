@@ -1,11 +1,11 @@
-import User from "../models/User.js";
-import bcrypt from "bcrypt";
+const User =require( "../models/User.js");
+const bcrypt =require( "bcrypt");
 const { compare } = bcrypt;
-import lodash from 'lodash'
+const lodash =require( 'lodash')
 const {pick} = lodash
 
 
-export const signup = async(req,res)=>{
+module.exports.signup = async(req,res)=>{
     try{
 
       let user = await User.findOne({Email: req.body.Email})
@@ -35,7 +35,7 @@ export const signup = async(req,res)=>{
     }
 }
 
-export const loginAsAdmin = async (req, res) => {
+module.exports.loginAsAdmin = async (req, res) => {
   try{
     let user = await User.findOne({ Email: req.body.Email });
    
@@ -68,7 +68,7 @@ export const loginAsAdmin = async (req, res) => {
 };
 
 
-export const loginAsUser = async(req,res) => {
+module.exports.loginAsUser = async(req,res) => {
   try{
     let user = await User.findOne({Email: req.body.Email});
     if(!user){
@@ -93,7 +93,7 @@ export const loginAsUser = async(req,res) => {
   }
 };
 
-export const getAllUsers = async(req,res)=>{
+module.exports.getAllUsers = async(req,res)=>{
   try{
     let users= await User.find({})
     return res.status(200).send(users)
@@ -102,7 +102,7 @@ export const getAllUsers = async(req,res)=>{
   }
 }
 
-export const getUserById = async(req,res)=>{
+module.exports.getUserById = async(req,res)=>{
   try{
     const user = await User.findById(req.params.id)
     return res.status(200).send(user)
@@ -111,7 +111,7 @@ export const getUserById = async(req,res)=>{
   }
 }
 
-export const deleteUser = async(req,res)=>{
+module.exports.deleteUser = async(req,res)=>{
   try{
     let user = await User.findByIdAndDelete(req.params.id)
     return res.status(200).send({

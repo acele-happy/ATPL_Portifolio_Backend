@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose =require('mongoose')
 
 mongoose.connect("mongodb+srv://portifolio-backeend:portifolio-backeend@cluster0.0ttlg.mongodb.net/portifolio-backeend?retryWrites=true&w=majority",{
     useNewUrlParser:true,
