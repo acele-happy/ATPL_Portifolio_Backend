@@ -2,7 +2,7 @@ import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../index.js";
 
-chai.should();
+let should = chai.should();
 chai.use(chaiHttp);
 
 describe("Test User APIs", () => {
@@ -19,6 +19,7 @@ describe("Test User APIs", () => {
         .post("/signup")
         .send(user)
         .end((err, response) => {
+          should.exist(response.body)
           response.should.have.status(200);
           response.should.be.a("object");
           done()

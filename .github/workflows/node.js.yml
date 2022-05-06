@@ -31,9 +31,9 @@ jobs:
 
     - name: Run tests
       run: npm run coverage
-
+    
     - name: "Upload coverage report"
       run: |
        ci_env=`curl -s https://codecov.io/env`
        npm install codecov -g
-       codecov -t 54f31841-44c3-46ae-935a-8eefeaf95987
+       codecov -t da4d62a5-670c-406e-9681-eb2dcccd52fb
