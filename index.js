@@ -31,9 +31,6 @@ app.use('/documentation',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(express.static('client/build'))
 import path from 'path'
-import { validateCreateUser } from './middlewares/validate.js'
-import { signup } from './controllers/user-controller.js'
-import User from './models/User.js'
 app.get('/',(req,res)=>{
     res.sendFile(path.resolve(__dirname,'views','index.html'))
 })

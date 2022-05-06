@@ -23,13 +23,15 @@ export const signup = async(req,res)=>{
         )
         
         await newuser.save()
-        return res.status(201).send({
-            message:
-              "Registered successfully.",
-            user: newuser
-          });
+        return res.render('/signup',{message: "Registered successfully"})
+        // return res.status(201).send({
+        //     message:
+        //       "Registered successfully.",
+        //     user: newuser
+        //   });
     }catch(e){
-       return res.status(400).send("Error!!!")
+        return res.render('/signup',{message: "Error!!!"})
+        // return res.status(400).send("Error!!!")
     }
 }
 
