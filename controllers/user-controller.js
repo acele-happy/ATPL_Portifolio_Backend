@@ -30,8 +30,8 @@ module.exports.signup = async(req,res)=>{
         //     user: newuser
         //   });
     }catch(e){
-        return res.render('/signup',{message: "Error!!!"})
-        // return res.status(400).send("Error!!!")
+        // return res.render('/signup',{message: "Error!!!"})
+        return res.status(400).send("Error!!!")
     }
 }
 
