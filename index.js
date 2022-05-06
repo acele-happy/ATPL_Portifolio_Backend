@@ -11,13 +11,6 @@ const swaggerUi = require('swagger-ui-express')
 
 //to use require in es6 you need to import it!
 const swaggerDocument = require('./swagger.json')
-
-// import { fileURLToPath } from 'url';
-// import { dirname } from 'path';
-
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
-
 dotenv.config()
 const PORT = process.env.PORT
 app.use(json())

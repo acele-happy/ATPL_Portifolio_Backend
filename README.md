@@ -5,7 +5,7 @@
 
 ### Badges
 
-[![CircleCI](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend/tree/main.svg?style=svg)](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend/tree/main)
+[![CircleCI](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend.svg?style=svg)](https://circleci.com/gh/acele-happy/ATPL_Portifolio_Backend)
 [![codecov.io](https://codecov.io/github/acele-happy/ATPL_Portifolio_Backend/coverage.svg?branch=main)](https://codecov.io/github/acele-happy/ATPL_Portifolio_Backend)
 
 ### Installation
