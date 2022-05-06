@@ -258,43 +258,8 @@
                     },
                     {
                         "in":"path",
-                        "name":"content",
-                        "description":"content location of the property",
-                        "type":"string",
-                        "required":"true"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Invalid data"
-                    },
-                    "404": {
-                        "description": "Not found"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/likeUnlikeArticle": {
-            "post": {
-                "tags": [
-                    "ARTICLE OPERATIONS"
-                ],
-                "summary": "Like or Unlike article",
-                "description": "Like/Unlike article",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters":[
-                    {
-                        "in":"header",
-                        "name":"Authorization",
-                        "description":"JWT Token of the user",
+                        "name":"comment",
+                        "description":"comment",
                         "type":"string",
                         "required":"true"
                     }
