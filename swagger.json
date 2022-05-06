@@ -487,6 +487,13 @@
                 "produces": [
                     "application/json"
                 ],
+                "parameters":[{
+                    "in":"path",
+                    "name":"id",
+                    "description":"id of the user",
+                    "type":"string",
+                    "required":"true"
+                }],
                 "responses": {
                     "200": {
                         "description": "Success"
