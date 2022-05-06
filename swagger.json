@@ -527,6 +527,12 @@
                         "description":"JWT Token of the user",
                         "type":"string",
                         "required":"true"
+                    },{
+                        "in":"path",
+                        "name":"id",
+                        "description":"id of the user",
+                        "type":"string",
+                        "required":"true"
                     }
                 ],
                 "responses": {
