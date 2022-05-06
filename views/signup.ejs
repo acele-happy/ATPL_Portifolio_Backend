@@ -17,7 +17,7 @@
         <h2>SIGNUP</h2>
         <p>Create Your Own Account To Acele's Portifolio!!</p>
         <div class="circle"></div>
-        <div class="success-div" id="success"><%=message %></div>
+        <div class="success-div" id="success"></div>
       </div>
       <!-- <div class="right"> -->
       <form action="/signup" id="form" class="form" method="POST">
@@ -33,12 +33,17 @@
           <input type="password" name="Password" id="Password" placeholder="Password" />
           <div class="error"></div>
         </div>
-        <button class="btn" type="submit">SIGNUP</button>
+        <button class="btn" type="submit" onclick="getMessage()">SIGNUP</button>
         <p class="p-mobile">
           Already have account?
           <a href="/login" class="login-link">LOGIN</a>
         </p>
       </form>
     </div>
+    <script>
+      function getMessage(){
+       console.log("huuhfehur")
+      }
+    </script>
   </body>
 </html>
