@@ -10,14 +10,10 @@ module.exports.validateCreateUser = async(req,res,next)=>{
         })
         const {error} = schema.validate(req.body)
         if(error){
-            return res.status(400).json({
-                error: error.message,
-                message: "Unable to create the account."
-            })
-            }
+            return res.render('signup.ejs',{message: error.message,style:'error-div'})}
             return next()
     }catch(e){
-        res.status(400).send("Error!! "+e)
+        res.render('signup.ejs',{message:"Error!!",style:'error-div'})
     }
 }
 
@@ -30,10 +26,7 @@ module.exports.validateLogin = async(req,res,next)=>{
 
         const {error} = schema.validate(req.body)
         if(error){
-            return res.status(400).json({
-                error: error.message,
-                message: "Unable to login to your account"
-            })
+            return res.render('loginAsUser.ejs',{message:error.message,style:"error-div"})
         }
 
         return next()

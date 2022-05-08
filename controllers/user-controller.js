@@ -3,36 +3,31 @@ const bcrypt =require( "bcrypt");
 const { compare } = bcrypt;
 const lodash =require( 'lodash')
 const {pick} = lodash
+const express = require('express')
 
 
 module.exports.signup = async(req,res)=>{
-    try{
+  try{
 
-      let user = await User.findOne({Email: req.body.Email})
+    let user = await User.findOne({Email: req.body.Email})
 
-      if(user){
-        return res.send("Email already exist")
-      }
-
-        let newuser= new User(
-            pick(req.body,[
-            "Name",
-            "Email",
-            "Password"
-        ])
-        )
-        
-        await newuser.save()
-        return res.render('/signup',{message: "Registered successfully"})
-        // return res.status(201).send({
-        //     message:
-        //       "Registered successfully.",
-        //     user: newuser
-        //   });
-    }catch(e){
-        // return res.render('/signup',{message: "Error!!!"})
-        return res.status(400).send("Error!!!")
+    if(user){
+      return res.render('signup.ejs',{message: "Email already exist", style:"error-div"})
     }
+
+      let newuser= new User(
+          pick(req.body,[
+          "Name",
+          "Email",
+          "Password"
+      ])
+      )
+      
+      await newuser.save()
+      return res.render('signup.ejs',{message: "Registered successfully",style:"success"})
+  }catch(e){
+      return res.render('signup.ejs',{message: "Error!!!",style:"error-div"})
+  }
 }
 
 module.exports.loginAsAdmin = async (req, res) => {
@@ -40,11 +35,11 @@ module.exports.loginAsAdmin = async (req, res) => {
     let user = await User.findOne({ Email: req.body.Email });
    
     if (!user){
-     return res.status(400).send("Invalid email or Password !!");
+     return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});
     }
     let email = req.body.Email;
     if (email != "acele@gmail.com"){
-     return res.status(400).send("Invalid email or Password !!");
+     return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});
     }
   
     let validPassword= false
@@ -53,17 +48,18 @@ module.exports.loginAsAdmin = async (req, res) => {
     }
  
     if(!validPassword) {
-      return res.status(400).send("Invalid email or Password !!");
+      return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});
     }
 
-    const token = user.generateAuthToken()
-    return res.header("Authorization",token).send({
-      message:"Welcome to admin dashboard",
-      token:token
-    })
+    return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
+    // const token = user.generateAuthToken()
+    // return res.header("Authorization",token).send({
+    //   message:"Welcome to admin dashboard",
+    //   token:token
+    // })
     // res.redirect('dashboard.html')
   }catch(e){
-   return res.status(500).send("Error!!"+e);
+   return res.render('login.ejs',{message:"Error!!",style:"error-div"});
   }
 };
 
@@ -72,24 +68,25 @@ module.exports.loginAsUser = async(req,res) => {
   try{
     let user = await User.findOne({Email: req.body.Email});
     if(!user){
-      res.status(400).send("Invalid email");
+     return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});
     }
 
-    let validPassword= compare(req.body.Password, user.Password)
-
+    let validPassword= await compare(req.body.Password, user.Password)
     if(!validPassword) {
-      res.status(400).send("invalid password!!");
+     return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});
     }
 
-    const token = user.generateAuthToken();
-    return res.header("Authorization", token).send({
-      status: 200,
-      message: "Login Successful",
-      data: user,
-      token: token
-    });
+    return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
+
+    // const token = user.generateAuthToken();
+    // return res.header("Authorization", token).send({
+    //   status: 200,
+    //   message: "Login Successful",
+    //   data: user,
+    //   token: token
+    // });
   }catch (e) {
-    res.status(400).send("Error!!");
+    res.render('loginAsUser',{message: 'Error!!',style:"error-div"});
   }
 };
 
