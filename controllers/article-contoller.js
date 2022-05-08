@@ -1,13 +1,28 @@
 const Article =require('../models/Article.js')
+const cloudinary = require('../utils/cloudinary')
 
 module.exports.createArticle = async (req,res)=>{
    try{
     let pic = req.body.Picture
     let title = req.body.Title
     let content = req.body.Content
-    // console.log("my piccc "+pic)
+
+    let articlePic;
+    if(req.file != null || req.files !=undefined){
+        for(let i= 0; i<req.files.length; i++){
+            const imgInfo = await cloudinary.uploader.upload(req.files[i].path)
+            const articlePic = imgInfo.secure_url
+            const articlePic_cloudinaryId = imgInfo.public_id
+            const articlePictureObject={
+                articlePic: articlePic,
+                articlePic_cloudinaryId: articlePic_cloudinaryId
+            }
+            articlePic = articlePictureObject
+        }
+    }
+
     let article = new Article({
-        Picture: pic,
+        Picture: articlePic,
         Title: title,
         Content: content
     })

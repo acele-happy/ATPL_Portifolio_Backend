@@ -3,7 +3,7 @@ const {Schema, model}= mongoose
 
 const articleSchema = new Schema({
     Picture:{
-        type: String,
+        type: Object,
         required: true
     },
     Title:{
