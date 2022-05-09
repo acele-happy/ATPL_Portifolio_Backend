@@ -29,7 +29,13 @@ module.exports.getAllArticles = async (req,res)=>{
         if(result.length == 0){
             return res.status(200).send("No article yet!")
         }
-        return res.status(200).send(result)
+        let sol;
+        result.forEach(article=>{
+            sol= article
+        })
+        // console.log(sol)
+        
+        return res.status(200).render('viewAllArticles.ejs',{data: sol})
     }catch(ex){
        return res.status(500).send(ex.message);
     }

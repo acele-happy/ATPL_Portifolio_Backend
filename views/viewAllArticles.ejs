@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <link rel="stylesheet" href="viewAllArticles.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="body">
+            <div class="left">
+                <ul>
+                    <li>Popular</li>
+                    <li>Most Liked</li>
+                    <li>Best Discussions</li>
+                    <li>Customise</li>
+                </ul>
+            </div>
+            <div class="right">
+                <input type="search" placeholder="Search a Blog..." class="search-inpt">
+                <h3 class="feed">My Feed</h3>
+                <div class="blogs">
+                    <div class="blog">
+                        <a href="singleBlog.html"><img src="https://res.cloudinary.com/dweikgdwq/image/upload/v1635536979/sample.jpg" alt=""></a>
+                        <div class="blog-cont">
+                            <p><%=data.Content%></p>
+                        </div>
+                        <div class="blog-icons">
+                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <!-- <div class="blog">
+                        <img src="./pictures/bl.jpg" alt="">
+                        <div class="blog-cont">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                        </div>
+                        <div class="blog-icons">
+                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog">
+                        <img src="./pictures/bl.jpg" alt="">
+                        <div class="blog-cont">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                        </div>
+                        <div class="blog-icons">
+                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                    <div class="blog">
+                     <img src="./pictures/bl.jpg" alt="">
+                     <div class="blog-cont">
+                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                     </div>
+                     <div class="blog-icons">
+                         <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                         <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                     </div>
+                    </div>
+                     <div class="blog">
+                         <img src="./pictures/bl.jpg" alt="">
+                         <div class="blog-cont">
+                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                         </div>
+                         <div class="blog-icons">
+                             <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                             <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                         </div>
+                     </div>
+                     <div class="blog">
+                         <img src="./pictures/an.jpg" alt="">
+                         <div class="blog-cont">
+                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                         </div>
+                         <div class="blog-icons">
+                             <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                             <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                         </div>
+                     </div>
+                     <div class="blog">
+                         <img src="./pictures/bl.jpg" alt="">
+                         <div class="blog-cont">
+                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                         </div>
+                         <div class="blog-icons">
+                             <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                             <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                         </div>
+                     </div>
+                     <div class="blog">
+                      <img src="./pictures/bl.jpg" alt="">
+                      <div class="blog-cont">
+                          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                      </div>
+                      <div class="blog-icons">
+                          <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                          <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+                      </div>
+                     </div> -->
+                  </div>
+
+                  
+                 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="footer">
+        <p>&copy; acele happy, all right reserved.</p>
+</div> -->
+
+</body>
+</html>
