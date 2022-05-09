@@ -1,3 +1,4 @@
+const { pickBy } = require('lodash')
 const Article =require('../models/Article.js')
 const cloudinary = require('../utils/cloudinary')
 
@@ -10,10 +11,10 @@ module.exports.createArticle = async (req,res)=>{
     const result = await cloudinary.uploader.upload(req.file.path, {folder:"articles"})
 
     let article = new Article({
-        Picture: result.secure_url,
+        Picture: pic,
         Title: title,
         Content: content,
-        CloudinaryId: result.public_id
+        // CloudinaryId: result.public_id
     })
 
     await article.save()
