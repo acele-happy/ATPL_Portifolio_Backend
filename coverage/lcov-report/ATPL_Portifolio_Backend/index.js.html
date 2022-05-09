@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.37% </span>
+                <span class="strong">85.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/32</span>
+                <span class='fraction'>35/41</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.87% </span>
+                <span class="strong">85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/31</span>
+                <span class='fraction'>34/40</span>
             </div>
         
             
@@ -105,12 +105,34 @@
 <a name='L40'></a><a href='#L40'>40</a>
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,6 +142,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -127,6 +152,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -143,6 +170,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -154,6 +188,11 @@ const app= express()
 const routes = require( './routes/routes.js')
 const cors = require("cors")
 const dotenv = require('dotenv')
+const lodash =require( 'lodash')
+const {pick} = lodash
+const authenticate = require('./middlewares/auth')
+//validations
+const {validateCreateUser} = require('./middlewares/validate')
 &nbsp;
 //Swagger
 const swaggerUi = require('swagger-ui-express')
@@ -162,6 +201,9 @@ const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger.json')
 dotenv.config()
 const PORT = process.env.PORT
+&nbsp;
+app.set('view engine', 'ejs')
+&nbsp;
 app.use(json())
 app.use(urlencoded({extended:true}))
 app.use(express.static('views'))
@@ -171,21 +213,30 @@ app.use('/documentation',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 &nbsp;
 app.use(express.static('client/build'))
 const path =require('path')
+const User = require('./models/User.js')
+const { signup } = require('./controllers/user-controller.js')
 app.get('/',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
 <span class="cstat-no" title="statement not covered" >    res.sendFile(path.resolve(__dirname,'views','index.html'))</span>
 })
 app.get('/loginAsAdmin',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
-<span class="cstat-no" title="statement not covered" >    res.render('login.ejs')</span>
+<span class="cstat-no" title="statement not covered" >    res.render('login.ejs',{message:"",style:""})</span>
 })
 app.get('/signup',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
-<span class="cstat-no" title="statement not covered" >    res.render('signup.ejs')</span>
+<span class="cstat-no" title="statement not covered" >    res.render('signup.ejs',{message:"",style:""})</span>
 })
 app.get('/contact',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
 <span class="cstat-no" title="statement not covered" >    res.sendFile(path.resolve(__dirname,'views','contact.html'))</span>
 })
 app.get('/loginAsUser',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
-<span class="cstat-no" title="statement not covered" >    res.render('loginAsUser.ejs')</span>
+<span class="cstat-no" title="statement not covered" >    res.render('loginAsUser.ejs',{message:"",style:""})</span>
 })
+// app.get('/newBlog',authenticate,(req,res)=&gt;{
+//     res.render('newBlog.ejs',{message:''})
+// })
+app.get('/newBlog',<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;{
+<span class="cstat-no" title="statement not covered" >    res.render('newBlog.ejs',{message:""})</span>
+})
+&nbsp;
 &nbsp;
 const server = app.listen(PORT,()=&gt;console.log("running on port "+ PORT))
 &nbsp;
@@ -196,7 +247,7 @@ module.exports=  server;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sat May 07 2022 18:22:17 GMT+0200 (Central Africa Time)
+                at Mon May 09 2022 13:18:15 GMT+0200 (Central Africa Time)
             </div>
         <script src="../prettify.js"></script>
         <script>

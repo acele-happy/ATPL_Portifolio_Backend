@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">74.54% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/56</span>
+                <span class='fraction'>41/55</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">74.54% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>42/56</span>
+                <span class='fraction'>41/55</span>
             </div>
         
             
@@ -183,10 +183,8 @@
 <a name='L118'></a><a href='#L118'>118</a>
 <a name='L119'></a><a href='#L119'>119</a>
 <a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -212,12 +210,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,7 +237,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,13 +257,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -314,36 +308,31 @@ const bcrypt =require( "bcrypt");
 const { compare } = bcrypt;
 const lodash =require( 'lodash')
 const {pick} = lodash
+const express = require('express')
 &nbsp;
 &nbsp;
 module.exports.signup = async(req,res)=&gt;{
-    try{
+  try{
 &nbsp;
-      let user = await User.findOne({Email: req.body.Email})
+    let user = await User.findOne({Email: req.body.Email})
 &nbsp;
-      <span class="missing-if-branch" title="else path not taken" >E</span>if(user){
-        return res.send("Email already exist")
-      }
-&nbsp;
-        let newuser= <span class="cstat-no" title="statement not covered" >new User(</span>
-            pick(req.body,[
-            "Name",
-            "Email",
-            "Password"
-        ])
-        )
-        
-<span class="cstat-no" title="statement not covered" >        await newuser.save()</span>
-<span class="cstat-no" title="statement not covered" >        return res.render('/signup',{message: "Registered successfully"})</span>
-        // return res.status(201).send({
-        //     message:
-        //       "Registered successfully.",
-        //     user: newuser
-        //   });
-    }catch(e){
-        // return res.render('/signup',{message: "Error!!!"})
-<span class="cstat-no" title="statement not covered" >        return res.status(400).send("Error!!!")</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(user){
+      return res.render('signup.ejs',{message: "Email already exist", style:"error-div"})
     }
+&nbsp;
+      let newuser= <span class="cstat-no" title="statement not covered" >new User(</span>
+          pick(req.body,[
+          "Name",
+          "Email",
+          "Password"
+      ])
+      )
+      
+<span class="cstat-no" title="statement not covered" >      await newuser.save()</span>
+<span class="cstat-no" title="statement not covered" >      return res.render('signup.ejs',{message: "Registered successfully",style:"success"})</span>
+  }catch(e){
+<span class="cstat-no" title="statement not covered" >      return res.render('signup.ejs',{message: "Error!!!",style:"error-div"})</span>
+  }
 }
 &nbsp;
 module.exports.loginAsAdmin = async (req, res) =&gt; {
@@ -351,11 +340,11 @@ module.exports.loginAsAdmin = async (req, res) =&gt; {
     let user = await User.findOne({ Email: req.body.Email });
    
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!user){
-<span class="cstat-no" title="statement not covered" >     return res.status(400).send("Invalid email or Password !!");</span>
+<span class="cstat-no" title="statement not covered" >     return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});</span>
     }
     let email = req.body.Email;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (email != "acele@gmail.com"){
-<span class="cstat-no" title="statement not covered" >     return res.status(400).send("Invalid email or Password !!");</span>
+<span class="cstat-no" title="statement not covered" >     return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});</span>
     }
   
     let validPassword= false
@@ -364,17 +353,18 @@ module.exports.loginAsAdmin = async (req, res) =&gt; {
     }
  
     <span class="missing-if-branch" title="if path not taken" >I</span>if(!validPassword) {
-<span class="cstat-no" title="statement not covered" >      return res.status(400).send("Invalid email or Password !!");</span>
+<span class="cstat-no" title="statement not covered" >      return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});</span>
     }
 &nbsp;
-    const token = user.generateAuthToken()
-    return res.header("Authorization",token).send({
-      message:"Welcome to admin dashboard",
-      token:token
-    })
+    return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
+    // const token = user.generateAuthToken()
+    // return res.header("Authorization",token).send({
+    //   message:"Welcome to admin dashboard",
+    //   token:token
+    // })
     // res.redirect('dashboard.html')
   }catch(e){
-<span class="cstat-no" title="statement not covered" >   return res.status(500).send("Error!!"+e);</span>
+<span class="cstat-no" title="statement not covered" >   return res.render('login.ejs',{message:"Error!!",style:"error-div"});</span>
   }
 };
 &nbsp;
@@ -383,24 +373,25 @@ module.exports.loginAsUser = async(req,res) =&gt; {
   try{
     let user = await User.findOne({Email: req.body.Email});
     <span class="missing-if-branch" title="if path not taken" >I</span>if(!user){
-<span class="cstat-no" title="statement not covered" >      res.status(400).send("Invalid email");</span>
+<span class="cstat-no" title="statement not covered" >     return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});</span>
     }
 &nbsp;
-    let validPassword= compare(req.body.Password, user.Password)
-&nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if(!validPassword) {
-<span class="cstat-no" title="statement not covered" >      res.status(400).send("invalid password!!");</span>
+    let validPassword= await compare(req.body.Password, user.Password)
+    <span class="missing-if-branch" title="else path not taken" >E</span>if(!validPassword) {
+     return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});
     }
 &nbsp;
-    const token = user.generateAuthToken();
-    return res.header("Authorization", token).send({
-      status: 200,
-      message: "Login Successful",
-      data: user,
-      token: token
-    });
+<span class="cstat-no" title="statement not covered" >    return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})</span>
+&nbsp;
+    // const token = user.generateAuthToken();
+    // return res.header("Authorization", token).send({
+    //   status: 200,
+    //   message: "Login Successful",
+    //   data: user,
+    //   token: token
+    // });
   }catch (e) {
-<span class="cstat-no" title="statement not covered" >    res.status(400).send("Error!!");</span>
+<span class="cstat-no" title="statement not covered" >    res.render('loginAsUser',{message: 'Error!!',style:"error-div"});</span>
   }
 };
 &nbsp;
@@ -439,7 +430,7 @@ module.exports.deleteUser = async(req,res)=&gt;{
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sat May 07 2022 18:22:17 GMT+0200 (Central Africa Time)
+                at Mon May 09 2022 13:18:15 GMT+0200 (Central Africa Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
