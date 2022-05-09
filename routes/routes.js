@@ -6,7 +6,7 @@ const {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticl
 const {validateCreateUser,validateLogin,validateCreatenUpdateArticle} =require( '../middlewares/validate.js')
 const authenticate =require( '../middlewares/auth.js')
 
-router.post('/createArticle',authenticate, validateCreatenUpdateArticle,createArticle)
+router.post('/createArticle', validateCreatenUpdateArticle,createArticle)
 router.patch('/comment/:id',authenticate,addComment)
 router.get('/getAllArticles',getAllArticles)
 router.get('/getArticleById/:id',getArticleById)

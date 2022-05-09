@@ -68,7 +68,7 @@ describe("POST /createArticle", () => {
 
 describe("PATCH /comment/:id", () => {
   it("It should comment on an article with specified id", (done) => {
-    let id = "6268f0c78d2dca6911ab4ed2";
+    let id = "62715f8e27b4c44f8e9a7370";
     let comment={
      content : "test comment added!!",
      userid : "62629d15ae1d2ef1f46a417a"

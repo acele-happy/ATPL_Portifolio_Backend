@@ -5,11 +5,11 @@
     flex-direction: column;
 
 }
-.right input{
+.right form input{
     outline: none;
     width: 60%;
 }
-.right textarea{
+.right form textarea{
     outline: none;
 }
 

@@ -17,7 +17,10 @@ let userSchema= Schema({
         type: String,
         required:true
     },
-
+    ProfilePicture:{
+        type: String,
+        default: "https://res.cloudinary.com/dweikgdwq/image/upload/v1635536979/sample.jpg"
+    }
 })
 
 userSchema.methods.generateAuthToken = function(){

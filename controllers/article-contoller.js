@@ -20,15 +20,14 @@ module.exports.createArticle = async (req,res)=>{
             articlePic = articlePictureObject
         }
     }
-
     let article = new Article({
-        Picture: articlePic,
+        Picture: pic,
         Title: title,
         Content: content
     })
 
     await article.save()
-    return res.status(201).send("Article created!!") 
+    return res.status(201).render('newBlog.ejs',{message: "Article created!!"}) 
    }catch(ex){
         return res.status(500).send(ex.message);
    }

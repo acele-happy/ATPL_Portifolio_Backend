@@ -45,10 +45,11 @@ module.exports.validateCreatenUpdateArticle = (req,res,next)=>{
 
     const {error} = schema.validate(req.body)
     if(error){
-        return res.status(400).json({
-            error: error.message,
-            message: "Unable to login to your account"
-        })
+        return res.render('newBlog.ejs',{message: error.message})
+        // return res.status(400).json({
+        //     error: error.message,
+        //     message: "Unable to login to your account"
+        // })
     }
 
     return next()

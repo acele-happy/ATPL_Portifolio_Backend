@@ -7,7 +7,7 @@ const cors = require("cors")
 const dotenv = require('dotenv')
 const lodash =require( 'lodash')
 const {pick} = lodash
-
+const authenticate = require('./middlewares/auth')
 //validations
 const {validateCreateUser} = require('./middlewares/validate')
 
@@ -47,6 +47,13 @@ app.get('/contact',(req,res)=>{
 app.get('/loginAsUser',(req,res)=>{
     res.render('loginAsUser.ejs',{message:"",style:""})
 })
+// app.get('/newBlog',authenticate,(req,res)=>{
+//     res.render('newBlog.ejs',{message:''})
+// })
+app.get('/newBlog',(req,res)=>{
+    res.render('newBlog.ejs',{message:""})
+})
+
 
 const server = app.listen(PORT,()=>console.log("running on port "+ PORT))
 
