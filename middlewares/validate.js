@@ -55,3 +55,23 @@ module.exports.validateCreatenUpdateArticle = (req,res,next)=>{
     return next()
 }
 
+module.exports.validateContact = (req,res,next)=>{
+    try{
+        const schema = Joi.object({
+            Name: Joi.string().required().label("Name"),
+            Email: Joi.string().required().label("Email"),
+            Message: Joi.string().min(5).required().label("Message")
+        })
+
+        const {error} = schema.validate(req.body)
+        if(error){
+              return res.status(400).json({
+            error: error.message,
+            message: "Thank you for your message!!"
+        })
+        }
+        return next()
+    }catch(ex){
+        res.send(ex.message)
+    }
+}

@@ -56,6 +56,9 @@ app.get('/newBlog',(req,res)=>{
 app.get('/dashboard',(req,res)=>{
     res.render('dashboard.ejs')
 })
+app.get('/singleBlog',(req,res)=>{
+    res.render('singleBlog.ejs')
+})
 
 
 const server = app.listen(PORT,()=>console.log("running on port "+ PORT))
