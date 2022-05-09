@@ -7,23 +7,13 @@ module.exports.createArticle = async (req,res)=>{
     let title = req.body.Title
     let content = req.body.Content
 
-    let articlePic;
-    if(req.file != null || req.files !=undefined){
-        for(let i= 0; i<req.files.length; i++){
-            const imgInfo = await cloudinary.uploader.upload(req.files[i].path)
-            const articlePic = imgInfo.secure_url
-            const articlePic_cloudinaryId = imgInfo.public_id
-            const articlePictureObject={
-                articlePic: articlePic,
-                articlePic_cloudinaryId: articlePic_cloudinaryId
-            }
-            articlePic = articlePictureObject
-        }
-    }
+    const result = await cloudinary.uploader.upload(req.file.path, {folder:"articles"})
+
     let article = new Article({
-        Picture: pic,
+        Picture: result.secure_url,
         Title: title,
-        Content: content
+        Content: content,
+        CloudinaryId: result.public_id
     })
 
     await article.save()

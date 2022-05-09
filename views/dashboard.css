@@ -84,6 +84,7 @@ a{
 }
 .blog-icons > span{
   margin-left: 20px;
+  cursor: pointer;
 }
 figcaption{
   color: lightgray;
@@ -169,4 +170,20 @@ figcaption{
 .blog img{
   width: 100%;
 }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 900px){
+  .blogs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1115px){
+  .blog{
+    width: 90%;
+  }
+  .blog img{
+    width: 100%;
+  }
 }

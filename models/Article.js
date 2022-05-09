@@ -14,6 +14,9 @@ const articleSchema = new Schema({
         type: String,
         required: true
     },
+    CloudinaryId:{
+        type: String
+    },
     Comments:[
         {
             userId:{type:mongoose.Schema.Types.ObjectId, ref:'User'},

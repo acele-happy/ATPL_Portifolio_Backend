@@ -32,17 +32,17 @@
             <span><i class="fa fa-sign-out" aria-hidden="true"></i></span>
           </div>
           <div class="side-links">
-            <span><a href="dashboard.html">Home</a></span>
+            <span><a href="/dashboard">Home</a></span>
             <span>New Blog</span>
             <span>Dark</span>
-            <span><a href="login.html">Logout</a></span>
+            <span><a href="/loginAsAdmin">Logout</a></span>
           </div>
         </div>
       </div>
       <div class="right">
         <form action="/createArticle" id="form" class="form" method="post">
-          <input type="text" placeholder="Title" id="title" name="Title"/>
-          <div><span>Blog Picture: </span><input type="file" id="pic" name="Picture"/></div>
+          <input type="text" placeholder="Title" id="title" name="Title" class="title"/>
+          <div><span>Blog Picture: </span><label for="inputFile"><input type="file" id="pic" name="Picture"/></label></div>
           <textarea
             name="Content"
             placeholder="Write Blog Content Here"

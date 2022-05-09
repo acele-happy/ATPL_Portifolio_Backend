@@ -13,6 +13,25 @@
     outline: none;
 }
 
+form textarea{
+    text-indent: 10px;
+}
+
+form>*{
+    margin-bottom: 20px;
+}
+.blogPic{
+    background: green;
+}
+.blogPic input{
+    display: none;
+}
+.blogPic label{
+    cursor: pointer;
+}
+.title{
+    padding: 10px;
+}
 .side-container{
     display: flex;
     height: 65vh;
