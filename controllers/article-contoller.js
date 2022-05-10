@@ -7,7 +7,7 @@ module.exports.createArticle = async (req,res)=>{
     let title = req.body.Title
     let content = req.body.Content
 
-    const result = await cloudinary.uploader.upload(req.file.path, {folder:"articles"})
+    // const result = await cloudinary.uploader.upload(req.file.path, {folder:"articles"})
 
     let article = new Article({
         Picture: pic,

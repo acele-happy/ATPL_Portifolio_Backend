@@ -64,3 +64,13 @@ body{
     bottom: 0 !important;
     width: 100%;
 }
+.log{
+    display: flex;
+    align-items: center;
+    top: 10px;
+    left: 10px;
+    position: relative;
+}
+.log span{
+    color: #f33052;
+}
