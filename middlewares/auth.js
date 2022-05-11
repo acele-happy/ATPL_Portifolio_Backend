@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const { verify } = jwt;
 
 module.exports = function (req, res, next) {
+  // const token = localStorage.getItem('token')
   const token = req.header("Authorization");
   if (!token) {
     return res.status(401).send("Access Denied! Login first");

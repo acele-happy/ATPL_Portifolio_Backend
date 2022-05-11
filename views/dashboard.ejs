@@ -37,87 +37,20 @@
             </div>
         </div>
         <div class="right">
+            
             <div id="blogs" class="blogs">
+                <%data.forEach(blog=>{ %>
                        <div class="blog">
-                           <img src="./pictures/bl.jpg" alt="">
+                           <img src="<%=blog.Picture%>" alt="">
                            <div class="blog-cont">
-                               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                               <p><%=blog.Content%></p>
                            </div>
                            <div class="blog-icons">
                                <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                               <span onclick="deleteArticle()"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                               <span onclick="deleteArticle('<%=blog._id%>')"><i class="fa fa-trash" aria-hidden="true"></i></span>
                            </div>
                        </div>
-                       <div class="blog">
-                           <img src="./pictures/bl.jpg" alt="">
-                           <div class="blog-cont">
-                               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                           </div>
-                           <div class="blog-icons">
-                               <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                               <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                           </div>
-                       </div>
-                       <div class="blog">
-                           <img src="./pictures/bl.jpg" alt="">
-                           <div class="blog-cont">
-                               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                           </div>
-                           <div class="blog-icons">
-                               <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                               <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                           </div>
-                       </div>
-                       <div class="blog">
-                        <img src="./pictures/bl.jpg" alt="">
-                        <div class="blog-cont">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                        </div>
-                        <div class="blog-icons">
-                            <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                            <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                        </div>
-                       </div>
-                        <div class="blog">
-                            <img src="./pictures/bl.jpg" alt="">
-                            <div class="blog-cont">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                            </div>
-                            <div class="blog-icons">
-                                <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                        <div class="blog">
-                            <img src="./pictures/an.jpg" alt="">
-                            <div class="blog-cont">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                            </div>
-                            <div class="blog-icons">
-                                <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                        <div class="blog">
-                            <img src="./pictures/bl.jpg" alt="">
-                            <div class="blog-cont">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                            </div>
-                            <div class="blog-icons">
-                                <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                                <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                        <div class="blog">
-                         <img src="./pictures/bl.jpg" alt="">
-                         <div class="blog-cont">
-                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                         </div>
-                         <div class="blog-icons">
-                             <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                             <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-                         </div>
-                        </div>
+                       <%})%>
         </div>
     </div>
     
@@ -132,9 +65,9 @@
        right.classList.toggle('active')
    }
 
-   const deleteArticle=  async(req,res)=>{
-    console.log('deleted..')
-}
+   function deleteArticle(id){
+       
+   }
     </script>
   </body>
 </html>

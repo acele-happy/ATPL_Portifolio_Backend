@@ -3,12 +3,10 @@ const Contact = require('../models/Contact')
 module.exports.createContactMessage = async(req,res)=>{
     try{
         let name = req.body.Name
-        let email = req.body.Email
         let message = req.body.Message
 
         let newMessage = await new Contact({
             Name: name,
-            Email:email,
             Message: message
         })
         await newMessage.save()

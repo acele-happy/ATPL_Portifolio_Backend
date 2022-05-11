@@ -33,7 +33,7 @@ const path =require('path')
 const User = require('./models/User.js')
 const { signup } = require('./controllers/user-controller.js')
 app.get('/',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'views','index.html'))
+    res.render('index.ejs')
 })
 app.get('/loginAsAdmin',(req,res)=>{
     res.render('login.ejs',{message:"",style:""})
@@ -61,6 +61,9 @@ app.get('/singleBlog',(req,res)=>{
 })
 app.get('/getAllArticles',(req,res)=>{
     res.render('viewAllArticles.ejs')
+})
+app.get('/dashboard',(req,res)=>{
+    res.render('dashboard.ejs')
 })
 
 

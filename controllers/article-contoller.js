@@ -1,24 +1,23 @@
 const Article =require('../models/Article.js')
-const cloudinary = require('../utils/cloudinary')
+const {cloudinary} = require('../utils/cloudinary')
 
 module.exports.createArticle = async (req,res)=>{
    try{
-    let pic = req.body.Picture
     let title = req.body.Title
     let content = req.body.Content
-
-    // const result = await cloudinary.uploader.upload(req.file.path, {folder:"articles"})
-
+    const result = await cloudinary.uploader.upload(req.file.path)
     let article = new Article({
-        Picture: pic,
+        Picture: result.secure_url,
         Title: title,
         Content: content,
-        // CloudinaryId: result.public_id
+        Cloudinary_id: result.public_id
     })
+    // return res.json({article})
 
     await article.save()
     return res.status(201).render('newBlog.ejs',{message: "Article created!!"}) 
    }catch(ex){
+       console.log(ex)
         return res.status(500).send(ex.message);
    }
 }
@@ -31,6 +30,18 @@ module.exports.getAllArticles = async (req,res)=>{
         }
         
         return res.status(200).render('viewAllArticles.ejs',{data: result})
+    }catch(ex){
+       return res.status(500).send(ex.message);
+    }
+}
+module.exports.dashboard = async (req,res)=>{
+    try{
+        const result = await Article.find()
+        if(result.length == 0){
+            return res.status(200).send("No article yet!")
+        }
+        
+        return res.status(200).render('dashboard.ejs',{data: result})
     }catch(ex){
        return res.status(500).send(ex.message);
     }
@@ -109,18 +120,52 @@ module.exports.addComment= async(req,res)=>{
    }
 }
 
-module.exports.likeUnlikeArticle = async(req,res)=>{
-    try{
-        const articleId= req.params.id
-        const userId = req.User._id
-
-        const article = Article.findById(articleId)
-        if(!article){
-            return res.json({message: "The property with the given id was not found", status: 400})
+exports.likeArticle=async(req,res)=>{
+    Article.findByIdAndUpdate(req.params.id,{
+        $push:{Likes:req.user._id}
+    },{
+        new:true
+    }).exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
         }
+    })
+}
+exports.unlikeArticle=async(req,res)=>{
+    Article.findByIdAndUpdate(req.params.id,{
+        $pull:{Likes:req.user._id}
+    },{
+        new:true
+    }).exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+}
 
-
-    }catch(e){
-        return res.json({message: "An error occured, try again", status: 500})
+exports.commentArticle=async(req,res)=>{
+    const comment = {
+        PostedBy:req.user._id,
+        Message: req.body.Message
     }
+    Article.findByIdAndUpdate(req.params.id,{
+        $push:{Comments:comment}
+    },{
+        new:true
+    })
+
+    .populate("comments.postedBy","_id name")
+    .populate("postedBy","_id name")
+    .exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+                
+        }
+    })
 }

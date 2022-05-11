@@ -46,12 +46,15 @@ module.exports.loginAsAdmin = async (req, res) => {
     if(req.body.Password === user.Password){
       validPassword=true
     }
- 
+
+    
     if(!validPassword) {
       return res.render('login.ejs',{message:"Invalid email or Password !!",style:"error-div"});
     }
-
-    return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
+    const token = user.generateAuthToken()
+    // console.log(token)
+    // localStorage.setItem('token',token)
+    return res.render('login.ejs',{message:"Logged in!!",style:"success",token:token})
     // const token = user.generateAuthToken()
     // return res.header("Authorization",token).send({
     //   message:"Welcome to admin dashboard",
@@ -59,7 +62,8 @@ module.exports.loginAsAdmin = async (req, res) => {
     // })
     // res.redirect('dashboard.html')
   }catch(e){
-   return res.render('login.ejs',{message:"Error!!",style:"error-div"});
+    return res.send(e)
+  //  return res.render('login.ejs',{message:"Error!!"+e+"",style:"error-div"});
   }
 };
 
@@ -76,6 +80,8 @@ module.exports.loginAsUser = async(req,res) => {
      return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});
     }
 
+     const token = user.generateAuthToken();
+     localStorage.setItem('token',token)
     return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
 
     // const token = user.generateAuthToken();

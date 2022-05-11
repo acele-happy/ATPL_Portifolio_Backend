@@ -74,3 +74,6 @@ body{
 .log span{
     color: #f33052;
 }
+.blog-cont{
+    word-wrap: break-word;
+}
