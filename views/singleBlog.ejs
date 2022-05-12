@@ -10,16 +10,158 @@
     />
     <link rel="stylesheet" href="singleBlog.css" />
     <title>Single Blog</title>
+  
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container{
+        width: 90%;
+        margin: auto;
+        position: relative;
+        top: 50px;
+    }
+    .center{
+        text-align: center;
+    }
+    
+    .upper{
+        display: flex;
+        
+    }
+    .lower{
+        display: flex;
+        justify-content: space-around;
+    }
+    .side-icons{
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        width: 50px;
+        align-items: center;
+        justify-content: space-evenly;
+        float: right;
+        width: 20%
+    }
+    .div{
+        width: 80%;
+    }
+    .div img{
+        position: relative;
+        width: 80%;
+    }
+    .content{
+        width: 70%;
+    }
+    .other-b{
+        width: 20%;
+        padding: 5px;
+    }
+    .other-b> div{
+        box-shadow: 5px 0 5px rgba(0,0,0,0.2);
+        cursor: pointer;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        padding: 5px;
+        height: auto;
+    }
+    .other-b> div:hover{
+        background: lightblue;
+    }
+    .side-icons span{
+        border: 1px solid #111;
+        display: flex;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        margin-bottom: 10px;
+        justify-content: center;
+        cursor: pointer
+    }
+    
+    .comment  input,.comment textarea{
+        display: block;
+        width: 50%;
+        background: transparent;
+        border-bottom: 2px solid #888;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        outline: none;
+        margin-bottom: 10px;
+    }
+    .comment{
+        margin-top: 30px;
+    }
+    .footer{
+        background: #111;
+        /* position: absolute; */
+        height: 70px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #888;
+        font-size: 15px;
+        margin-top: 100px;
+    }
+    
+    .comment .btn{
+        background: #390ABE;
+        color: #fff;
+        width: 150px;
+        margin-top: 20px;
+        padding: 10px;
+        border: none;
+    }
+    
+    .fa-arrow-left{
+        margin-left: 50px;
+        margin-top: 40px;
+    }
+    
+    @media screen and (max-width: 700px) {
+        .lower{
+            flex-direction: column;
+        }
+        .content{
+            width: 100%;
+        }
+        .div> img{
+            width: 100%;
+        }
+        .side-icons span{
+            width: 20px;
+            height: 20px;
+        }
+        .side-icons{
+            position: relative;
+            top: -30px;
+        }
+        .other-b{
+            width: 100%;
+            margin-top: 10px;
+        }
+        .comment input, .comment textarea{
+            width: 100%;
+        }
+        .back{
+            color: #000;
+        }
+    }
+    </style>
   </head>
   <body>
     <a href="/" class="back"
       ><i class="fa fa-arrow-left" aria-hidden="true"></i
     ></a>
     <div class="container">
-      <h2 class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h2>
+      <h2 class=""><%=data.Title%></h2>
       <div class="upper">
         <div class="div">
-          <img src="https://res.cloudinary.com/dweikgdwq/image/upload/v1635536979/sample.jpg" alt="" />
+          <img src="<%=data.Picture%>" alt="" />
         </div>
         <div class="side-icons">
           <span><i class="fa fa-heart" aria-hidden="true"></i></span>
@@ -31,13 +173,7 @@
       <div class="lower">
         <div class="content">
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
-            assumenda, quisquam eum sed obcaecati quo ducimus beatae mollitia
-            quis voluptas incidunt doloremque laborum cumque, sapiente ut neque
-            molestiae illo eligendi? Lorem ipsum dolor sit, amet consectetur
-            adipisicing elit. Enim voluptatibus odio dolorum dolor temporibus
-            dolores aut. Incidunt eos voluptatem possimus aspernatur ut
-            expedita! Eveniet, facere qui fuga beatae ipsum cupiditate?
+            <%=data.Content%>
           </p>
         </div>
         <div class="other-b">
@@ -58,8 +194,8 @@
       </div>
 
       <div class="comment">
-        <form action="/createContactMessage" id="form1" class="form">
-          <input type="text" placeholder="Name" />
+        <form id="form1" class="form">
+          <input type="text" placeholder="Name" name="Name"/>
           <textarea
             name="Content"
             id="txt"
@@ -67,12 +203,27 @@
             rows="3"
             placeholder="Write your comment here..."
           ></textarea>
-          <button class="btn" type="submit">Comment</button>
+          <button class="btn" onsubmit="comment('<%=data._id%>')">Comment</button>
         </form>
       </div>
     </div>
     <div class="footer">
       <p>&copy; acele happy, all right reserved.</p>
     </div>
+
+    <script>
+        function comment(id){
+          fetch("https://atpl-my-brand.herokuapp.com/addComment/"+id, { 
+           method: 'PATCH',
+           mode:'cors',
+           headers:{
+               'Access-Control-Allow-Origin':'*'
+   
+       }})
+       .then(res=>res.json())
+       .then(data=>console.log(data))
+       .catch(er=>console.log("Error "+er))
+      }
+    </script>
   </body>
 </html>

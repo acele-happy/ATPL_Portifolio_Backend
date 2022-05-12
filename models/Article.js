@@ -19,8 +19,9 @@ const articleSchema = new Schema({
     },
     Comments:[
         {
-            PostedBy:{type:mongoose.Schema.Types.ObjectId, ref:'User'},
+            // PostedBy:{type:mongoose.Schema.Types.ObjectId, ref:'User'},
             Message:{type:String, required: true},
+            Name:{type:String, required:true},
             date:{type: Date}
         }
     ],

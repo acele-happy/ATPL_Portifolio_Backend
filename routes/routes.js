@@ -9,7 +9,7 @@ const authenticate =require( '../middlewares/auth.js')
 const upload = require('../utils/multer')
 
 router.post('/createArticle',upload.single('Picture'),createArticle)
-router.patch('/comment/:id',authenticate,addComment)
+router.patch('/comment/:id',addComment)
 router.get('/getAllArticles',getAllArticles)
 router.get('/dashboard',dashboard)
 router.get('/getArticleById/:id',getArticleById)

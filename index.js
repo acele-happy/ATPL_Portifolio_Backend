@@ -53,9 +53,9 @@ app.get('/newBlog',(req,res)=>{
 app.get('/dashboard',(req,res)=>{
     res.render('dashboard.ejs')
 })
-app.get('/singleBlog',(req,res)=>{
-    res.render('singleBlog.ejs')
-})
+// app.get('/singleBlog/:id',(req,res)=>{
+//     res.render('singleBlog.ejs')
+// })
 app.get('/getAllArticles',(req,res)=>{
     res.render('viewAllArticles.ejs')
 })

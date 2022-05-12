@@ -30,6 +30,7 @@ body{
 }
 .blogs .blog{
     margin-bottom: 20px;
+    cursor: pointer;
 }
 .search-inpt{
     width: 400px;

@@ -29,8 +29,8 @@
               
                 <div class="blogs">
                     <%data.forEach(blog=>{ %>
-                    <div class="blog">
-                        <a href="singleBlog.html"><img src="<%=blog.Picture%>" alt=""></a>
+                    <div class="blog" onclick="singleBlog('<%=blog._id%>')">
+                        <a><img src="<%=blog.Picture%>" alt=""></a>
                         <div class="blog-cont">
                             <p><%=blog.Content%></p>
                         </div>
@@ -51,6 +51,12 @@
     <!-- <div class="footer">
         <p>&copy; acele happy, all right reserved.</p>
 </div> -->
+
+<script>
+    function singleBlog(id){
+        location.href = '/getArticleById/'+id
+    }
+</script>
 
 </body>
 </html>
