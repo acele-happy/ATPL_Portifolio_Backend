@@ -158,91 +158,21 @@
 
             <div class="">
                 <div class="blogs">
+                    <%data.forEach(blog=>{ %>
                    <div class="blog">
-             <img src="./pictures/bl.jpg" alt="">
+             <img src="<%=blog.Picture%>" alt="">
                        <div class="blog-cont">
-                           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
+                           <p><%=blog.Content%></p>
                        </div>
                        <div class="blog-icons">
                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
                        </div>
                    </div>
-                   <div class="blog">
-                       <img src="./pictures/bl.jpg" alt="">
-                       <div class="blog-cont">
-                           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                       </div>
-                       <div class="blog-icons">
-                           <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                           <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                       </div>
-                   </div>
-                   <div class="blog">
-                       <img src="./pictures/bl.jpg" alt="">
-                       <div class="blog-cont">
-                           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                       </div>
-                       <div class="blog-icons">
-                           <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                           <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                       </div>
-                   </div>
-                   <div class="blog">
-                    <img src="./pictures/bl.jpg" alt="">
-                    <div class="blog-cont">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                    </div>
-                    <div class="blog-icons">
-                        <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                        <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                    </div>
-                   </div>
-                </div>
-
-                <div id="blogs" class="blogs">
-                    <div class="blog">
-                        <img src="./pictures/bl.jpg" alt="">
-                        <div class="blog-cont">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                        </div>
-                        <div class="blog-icons">
-                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="./pictures/an.jpg" alt="">
-                        <div class="blog-cont">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                        </div>
-                        <div class="blog-icons">
-                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog">
-                        <img src="./pictures/bl.jpg" alt="">
-                        <div class="blog-cont">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                        </div>
-                        <div class="blog-icons">
-                            <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                            <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                        </div>
-                    </div>
-                    <div class="blog" onclick="fetch()">
-                     <img src="./pictures/bl.jpg" alt="">
-                     <div class="blog-cont">
-                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus porro ea natus omnis minima aspernatur dolore magnam fugiat iste sequi! Numquam voluptate porro neque odio, eos quod et animi enim! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci dolores voluptate a facere? Labore eveniet nobis iste ad tempore libero vitae ullam nesciunt tempora, deserunt nulla doloremque magni similique asperiores.</p>
-                     </div>
-                     <div class="blog-icons">
-                         <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                         <span><i class="fa fa-comment-o" aria-hidden="true"></i></span>
-                     </div>
-                    </div>
+                   <%})%>
                  </div>
                 </div>
+
     </div>
     <!-- <div class="center">
         <a href="/getAllArticles" class="more">View more Blogs</a>
@@ -276,14 +206,6 @@
     function mobileMenu(){
         hamburger.classList.toggle('active')
         ul.classList.toggle('active')
-    }
-
- 
-    function fetch(){
-        fetch("https://atpl-my-brand.herokuapp.com/getAllArticles   ",{method:'GET'})
-        .then(res=>res.json())
-        .then(data=>console.log(data))
-        .catch(err=>console.log(err))
     }
      </script>
 </body>

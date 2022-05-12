@@ -37,6 +37,21 @@ module.exports.getAllArticles = async (req, res) => {
     return res.status(500).send(ex.message);
   }
 };
+
+module.exports.getAllArticlesIndex = async (req, res) => {
+    try {
+      const result = await Article.find();
+      if (result.length == 0) {
+        return res.status(200).send("No article yet!");
+      }
+  
+      // return res.json({data: result})
+      return res.status(200).render("index.ejs", { data: result });
+    } catch (ex) {
+      return res.status(500).send(ex.message);
+    }
+  };
+
 module.exports.dashboard = async (req, res) => {
   try {
     const result = await Article.find();
