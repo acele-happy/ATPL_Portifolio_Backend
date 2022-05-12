@@ -36,6 +36,7 @@
              </div>
             </div>
         </div>
+
         <div class="right">
             
             <div id="blogs" class="blogs">
@@ -66,16 +67,18 @@
    }
 
    function deleteArticle(id){
-       const token=localStorage.getItem('token')
        fetch("https://atpl-my-brand.herokuapp.com/deleteArticle/"+id, { 
         method: 'DELETE',
+        mode:'cors',
         headers:{
-           'Content-Type':'Application/json'
+            'Access-Control-Allow-Origin':'*'
 
     }})
-       .then(res=>console.log(res))
+       .then(res=>res.json())
+       .then(data=>console.log(data))
        .catch(er=>console.log("Error "+er))
    }
+   window.onload = ()=>console.log('loaded')
     </script>
   </body>
 </html>

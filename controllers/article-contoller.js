@@ -29,6 +29,7 @@ module.exports.getAllArticles = async (req,res)=>{
             return res.status(200).send("No article yet!")
         }
         
+        // return res.json({data: result})
         return res.status(200).render('viewAllArticles.ejs',{data: result})
     }catch(ex){
        return res.status(500).send(ex.message);

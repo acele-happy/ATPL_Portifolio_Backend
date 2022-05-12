@@ -54,7 +54,7 @@ module.exports.loginAsAdmin = async (req, res) => {
     const token = user.generateAuthToken()
     // console.log(token)
     // localStorage.setItem('token',token)
-    // return res.render('login.ejs',{message:"Logged in!!",style:"success",token:token})
+    // res.render('login.ejs',{message:"Logged in!!",style:"success",token:token})
     return res.redirect('/dashboard')
     // const token = user.generateAuthToken()
     // return res.header("Authorization",token).send({

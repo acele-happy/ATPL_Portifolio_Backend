@@ -20,13 +20,12 @@ dotenv.config()
 const PORT = process.env.PORT
 
 app.set('view engine', 'ejs')
-
+app.use(cors({origin: '*'}))
+// app.use(corsFunction) 
 app.use(json())
 app.use(urlencoded({extended:true}))
 app.use(express.static('views'))
 app.use(routes)
-app.use(cors())
-app.use(corsFunction) 
 app.use('/documentation',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(express.static('client/build'))
