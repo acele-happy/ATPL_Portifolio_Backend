@@ -274,6 +274,7 @@ svg {
     box-shadow: 3px 0px 5px rgba(0,0,0,0.2);
     border-radius: 10px;
     word-wrap: break-word;
+    cursor: pointer;
 }
 .blog>img,.blog>a>img{
   width: 300px;

@@ -157,7 +157,7 @@
         <p class="center">Read, support me!</p>
 
             <div class="">
-                <div class="blogs">
+                <div class="blogs" onclick="redirect()">
                     <%data.forEach(blog=>{ %>
                    <div class="blog">
              <img src="<%=blog.Picture%>" alt="">
@@ -206,6 +206,10 @@
     function mobileMenu(){
         hamburger.classList.toggle('active')
         ul.classList.toggle('active')
+    }
+
+    function redirect(){
+        location.href = '/loginAsUser'
     }
      </script>
 </body>
