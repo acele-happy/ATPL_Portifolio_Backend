@@ -81,7 +81,7 @@ module.exports.loginAsUser = async(req,res) => {
     }
 
      const token = user.generateAuthToken();
-     localStorage.setItem('token',token)
+    //  localStorage.setItem('token',token)
     return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
 
     // const token = user.generateAuthToken();

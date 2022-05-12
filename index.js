@@ -10,7 +10,7 @@ const {pick} = lodash
 const authenticate = require('./middlewares/auth')
 //validations
 const {validateCreateUser} = require('./middlewares/validate')
-
+const {corsFunction} = require('./utils/cors')
 //Swagger
 const swaggerUi = require('swagger-ui-express')
 
@@ -26,6 +26,7 @@ app.use(urlencoded({extended:true}))
 app.use(express.static('views'))
 app.use(routes)
 app.use(cors())
+// app.use(corsFunction())
 app.use('/documentation',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(express.static('client/build'))
@@ -65,7 +66,6 @@ app.get('/getAllArticles',(req,res)=>{
 app.get('/dashboard',(req,res)=>{
     res.render('dashboard.ejs')
 })
-
 
 const server = app.listen(PORT,()=>console.log("running on port "+ PORT))
 
