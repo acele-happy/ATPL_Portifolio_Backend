@@ -13,7 +13,7 @@ router.patch('/comment/:id',authenticate,addComment)
 router.get('/getAllArticles',getAllArticles)
 router.get('/dashboard',dashboard)
 router.get('/getArticleById/:id',getArticleById)
-router.delete('/deleteArticle/:id',authenticate,deleteArticle)
+router.delete('/deleteArticle/:id',deleteArticle)
 router.put('/editArticle/:id',authenticate,validateCreatenUpdateArticle,updateArticle)
 
 //User Routes

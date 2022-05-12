@@ -66,9 +66,13 @@
    }
 
    function deleteArticle(id){
-       fetch("https://atpl-my-brand.herokuapp.com/deleteArticle/"+id, {method: 'DELETE', headers: {
-           "Access-Control-Allow-Origin" : "*"
-       }})
+       const token=localStorage.getItem('token')
+       fetch("https://atpl-my-brand.herokuapp.com/deleteArticle/"+id, { 
+        method: 'DELETE',
+        headers:{
+           'Content-Type':'Application/json'
+
+    }})
        .then(res=>console.log(res))
        .catch(er=>console.log("Error "+er))
    }
