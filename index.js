@@ -26,7 +26,7 @@ app.use(urlencoded({extended:true}))
 app.use(express.static('views'))
 app.use(routes)
 app.use(cors())
-// app.use(corsFunction())
+app.use(corsFunction) 
 app.use('/documentation',swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use(express.static('client/build'))
@@ -48,9 +48,6 @@ app.get('/contact',(req,res)=>{
 app.get('/loginAsUser',(req,res)=>{
     res.render('loginAsUser.ejs',{message:"",style:""})
 })
-// app.get('/newBlog',authenticate,(req,res)=>{
-//     res.render('newBlog.ejs',{message:''})
-// })
 app.get('/newBlog',(req,res)=>{
     res.render('newBlog.ejs',{message:""})
 })
@@ -62,9 +59,6 @@ app.get('/singleBlog',(req,res)=>{
 })
 app.get('/getAllArticles',(req,res)=>{
     res.render('viewAllArticles.ejs')
-})
-app.get('/dashboard',(req,res)=>{
-    res.render('dashboard.ejs')
 })
 
 const server = app.listen(PORT,()=>console.log("running on port "+ PORT))

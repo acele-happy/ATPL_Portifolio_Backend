@@ -3,7 +3,7 @@ const router = express.Router()
 const {createArticle, getAllArticles, getArticleById, deleteArticle,updateArticle,addComment,dashboard} =require( '../controllers/article-contoller.js')
 
  const {signup,getAllUsers,getUserById,loginAsAdmin,loginAsUser,deleteUser} =require( '../controllers/user-controller.js')
-const {validateCreateUser,validateLogin,validateCreatenUpdateArticle,validateContact} =require( '../middlewares/validate.js')
+const {validateCreateUser,validateLoginAsAdmin,validateCreatenUpdateArticle,validateContact,validateLoginAsUser} =require( '../middlewares/validate.js')
 const {createContactMessage} = require('../controllers/contact-controller')
 const authenticate =require( '../middlewares/auth.js')
 const upload = require('../utils/multer')
@@ -20,8 +20,8 @@ router.put('/editArticle/:id',authenticate,validateCreatenUpdateArticle,updateAr
 router.post('/signup',validateCreateUser,signup)
 router.get('/getAllUsers',authenticate,getAllUsers)
 router.get('/getUserById/:id',getUserById)
-router.post('/loginAsAdmin',validateLogin,loginAsAdmin)
-router.post('/loginAsUser',validateLogin,loginAsUser)
+router.post('/loginAsAdmin',validateLoginAsAdmin,loginAsAdmin)
+router.post('/loginAsUser',validateLoginAsUser,loginAsUser)
 router.delete('/deleteUser/:id',authenticate,deleteUser)
 
 // Message Routes

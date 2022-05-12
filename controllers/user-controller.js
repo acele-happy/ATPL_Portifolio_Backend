@@ -54,7 +54,8 @@ module.exports.loginAsAdmin = async (req, res) => {
     const token = user.generateAuthToken()
     // console.log(token)
     // localStorage.setItem('token',token)
-    return res.render('login.ejs',{message:"Logged in!!",style:"success",token:token})
+    // return res.render('login.ejs',{message:"Logged in!!",style:"success",token:token})
+    return res.redirect('/dashboard')
     // const token = user.generateAuthToken()
     // return res.header("Authorization",token).send({
     //   message:"Welcome to admin dashboard",
@@ -72,17 +73,21 @@ module.exports.loginAsUser = async(req,res) => {
   try{
     let user = await User.findOne({Email: req.body.Email});
     if(!user){
-     return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});
+     return res.render('loginAsUser.ejs',{message:"User?",style:"error-div"});
     }
 
-    let validPassword= await compare(req.body.Password, user.Password)
+    let validPassword= false
+    if(req.body.Password === user.Password){
+      validPassword=true
+    }
     if(!validPassword) {
-     return res.render('loginAsUser.ejs',{message:"Invalid Email or Password!",style:"error-div"});
+     return res.render('loginAsUser.ejs',{message:" Password!",style:"error-div"});
     }
 
      const token = user.generateAuthToken();
     //  localStorage.setItem('token',token)
-    return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
+    // return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
+  return  res.redirect('/getAllArticles')
 
     // const token = user.generateAuthToken();
     // return res.header("Authorization", token).send({

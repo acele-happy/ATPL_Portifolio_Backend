@@ -17,7 +17,7 @@ module.exports.validateCreateUser = async(req,res,next)=>{
     }
 }
 
-module.exports.validateLogin = async(req,res,next)=>{
+module.exports.validateLoginAsUser = async(req,res,next)=>{
     try{
         const schema = Joi.object({
             Email: Joi.string().min(5).required().label("Email"),
@@ -34,6 +34,25 @@ module.exports.validateLogin = async(req,res,next)=>{
         res.status(400).send("Error!")
     }
 }
+
+module.exports.validateLoginAsAdmin = async(req,res,next)=>{
+    try{
+        const schema = Joi.object({
+            Email: Joi.string().min(5).required().label("Email"),
+            Password: Joi.string().min(5).required().label("Password")
+        })
+
+        const {error} = schema.validate(req.body)
+        if(error){
+            return res.render('login.ejs',{message:error.message,style:"error-div"})
+        }
+
+        return next()
+    }catch(e){
+        res.status(400).send("Error!")
+    }
+}
+
 //Article
 
 module.exports.validateCreatenUpdateArticle = (req,res,next)=>{
