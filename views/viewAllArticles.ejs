@@ -32,7 +32,7 @@
                     <div class="blog" onclick="singleBlog('<%=blog._id%>')">
                         <a><img src="<%=blog.Picture%>" alt=""></a>
                         <div class="blog-cont">
-                            <p><%=blog.Content%></p>
+                            <p><%=blog.Content.substring(0,150)%></p>
                         </div>
                         <div class="blog-icons">
                             <span><i class="fa fa-heart-o" aria-hidden="true"></i></span>

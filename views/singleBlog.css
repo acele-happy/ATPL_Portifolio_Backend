@@ -101,12 +101,15 @@
     margin-top: 20px;
     padding: 10px;
     border: none;
+    cursor: pointer;
 }
 
 .fa-arrow-left{
     margin-left: 50px;
     margin-top: 40px;
 }
+
+
 
 @media screen and (max-width: 700px) {
     .lower{
