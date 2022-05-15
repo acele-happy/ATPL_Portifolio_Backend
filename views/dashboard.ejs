@@ -57,15 +57,15 @@
     
     <script>
 
+        let token = localStorage.getItem('token')
+        if(!token){
+            location.href = '/loginAsAdmin'
+        }
+        
         const urlParams = new URLSearchParams(window.location.search)
         const myParam = urlParams.get('token')
         if(myParam.split(' ')[0]==='Bearer'){
             localStorage.setItem('token',myParam)
-        }
-
-        let token = localStorage.getItem('token')
-        if(!token){
-            location.href = '/loginAsAdmin'
         }
 
         const hamburger= document.querySelector('.hamburger')
