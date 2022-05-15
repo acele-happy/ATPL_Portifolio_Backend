@@ -20,7 +20,7 @@
                     <li>Most Liked</li>
                     <li>Best Discussions</li>
                     <li>Customise</li>
-                    <li>LOGOUT</li>
+                    <li onclick="logout()">LOGOUT</li>
                 </ul>
             </div>
             <div class="right">
@@ -53,8 +53,25 @@
 </div> -->
 
 <script>
+    const urlParams = new URLSearchParams(window.location.search)
+    const myParam = urlParams.get('token')
+    if(myParam.split(' ')[0]==='Bearer'){
+        localStorage.setItem('token',myParam)
+    }
+
+    
+    let token = localStorage.getItem('token')
+        if(!token){
+            location.href = '/loginAsUser'
+        }
+    
     function singleBlog(id){
         location.href = '/getArticleById/'+id
+    }
+
+    function logout(){
+        localStorage.removeItem('token')
+        location.href = '/loginAsUser'
     }
 </script>
 

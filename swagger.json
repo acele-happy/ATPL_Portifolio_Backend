@@ -231,7 +231,7 @@
                 }
             }
         },
-        "/addComment": {
+        "/comment": {
             "post": {
                 "tags": [
                     "ARTICLE OPERATIONS"
@@ -258,7 +258,14 @@
                     },
                     {
                         "in":"path",
-                        "name":"comment",
+                        "name":"Name",
+                        "description":"comment",
+                        "type":"string",
+                        "required":"true"
+                    },
+                    {
+                        "in":"path",
+                        "name":"Message",
                         "description":"comment",
                         "type":"string",
                         "required":"true"

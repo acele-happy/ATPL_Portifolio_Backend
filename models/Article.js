@@ -22,7 +22,7 @@ const articleSchema = new Schema({
             // PostedBy:{type:mongoose.Schema.Types.ObjectId, ref:'User'},
             Message:{type:String, required: true},
             Name:{type:String, required:true},
-            date:{type: Date}
+            date:{type: Date, required:true}
         }
     ],
     Likes:[],

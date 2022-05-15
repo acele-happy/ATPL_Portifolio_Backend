@@ -32,7 +32,7 @@
                  <span><a href="/dashboard">Home</a></span>
                  <span><a href="/newBlog">New Blog</a></span>
                  <span>Dark</span>
-                 <span><a href="/loginAsAdmin">Logout</a></span>
+                 <span onclick="logout()"><a>Logout</a></span>
              </div>
             </div>
         </div>
@@ -56,6 +56,18 @@
     </div>
     
     <script>
+
+        const urlParams = new URLSearchParams(window.location.search)
+        const myParam = urlParams.get('token')
+        if(myParam.split(' ')[0]==='Bearer'){
+            localStorage.setItem('token',myParam)
+        }
+
+        let token = localStorage.getItem('token')
+        if(!token){
+            location.href = '/loginAsAdmin'
+        }
+
         const hamburger= document.querySelector('.hamburger')
         const left = document.querySelector('.left')
         const right = document.querySelector('.right')
@@ -78,7 +90,12 @@
        .then(data=>console.log(data))
        .catch(er=>console.log("Error "+er))
    }
-   window.onload = ()=>console.log('loaded')
+
+
+   function logout(){
+       localStorage.removeItem('token')
+       location.href = '/loginAsAdmin'
+   }
     </script>
   </body>
 </html>

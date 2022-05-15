@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="singleBlog.css" />
+    <!-- <link rel="stylesheet" href="singleBlog.css" /> -->
     <title>Single Blog</title>
   
     <style>
@@ -209,17 +209,17 @@
 
 
       <div class="comment">
-        <!-- <form id="form1" class="form"> -->
+        <form id="form1" class="form">
           <input type="text" placeholder="Name" name="Name"/>
           <textarea
-            name="Content"
+            name="Message"
             id="txt"
             cols="70"
             rows="3"
             placeholder="Write your comment here..."
           ></textarea>
-          <button class="btn" onclick="comment('<%=data._id%>')">Comment</button>
-        <!-- </form> -->
+          <button class="btn" type="submit">Comment</button>
+        </form>
       </div>
     </div>
     <div class="footer">
@@ -227,6 +227,13 @@
     </div>
 
     <script>
+
+      
+      let token = localStorage.getItem('token')
+      if(!token){
+          location.href = '/loginUser'
+      }
+
         function comment(id){
           fetch("https://atpl-my-brand.herokuapp.com/comment/"+id, { 
            method: 'PATCH',

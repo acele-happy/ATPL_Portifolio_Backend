@@ -55,7 +55,7 @@ module.exports.loginAsAdmin = async (req, res) => {
     // console.log(token)
     // localStorage.setItem('token',token)
     // res.render('login.ejs',{message:"Logged in!!",style:"success",token:token})
-    return res.redirect('/dashboard')
+    return res.redirect('/dashboard?token='+encodeURIComponent(token))
     // const token = user.generateAuthToken()
     // return res.header("Authorization",token).send({
     //   message:"Welcome to admin dashboard",
@@ -73,7 +73,7 @@ module.exports.loginAsUser = async(req,res) => {
   try{
     let user = await User.findOne({Email: req.body.Email});
     if(!user){
-     return res.render('loginAsUser.ejs',{message:"User?",style:"error-div"});
+     return res.render('loginAsUser.ejs',{message:"Invalid email or Password !!",style:"error-div"});
     }
 
     let validPassword= false
@@ -81,13 +81,13 @@ module.exports.loginAsUser = async(req,res) => {
       validPassword=true
     }
     if(!validPassword) {
-     return res.render('loginAsUser.ejs',{message:" Password!",style:"error-div"});
+     return res.render('loginAsUser.ejs',{message:"Invalid email or Password !!",style:"error-div"});
     }
 
      const token = user.generateAuthToken();
     //  localStorage.setItem('token',token)
     // return res.render('loginAsUser.ejs',{message:"Logged in!!",style:"success"})
-  return  res.redirect('/getAllArticles')
+  return  res.redirect('/getAllArticles?token='+ encodeURIComponent(token))
 
     // const token = user.generateAuthToken();
     // return res.header("Authorization", token).send({

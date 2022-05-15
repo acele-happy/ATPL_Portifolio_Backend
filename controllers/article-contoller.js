@@ -90,7 +90,7 @@ module.exports.deleteArticle = async (req, res) => {
     //     message: "deleted!!",
     //     data: result
     // })
-    res.redirect("/dashboard");
+    return res.redirect("/dashboard");
   } catch (ex) {
     // console.log("eroorrr")
     return res.status(500).send(ex.message);
@@ -118,12 +118,13 @@ module.exports.addComment = async (req, res) => {
   try {
     // let commenter = req.User._id
     // console.log(req.body.user._id)
-    let Message = req.body.Message;
+    console.log('here...')
+    let Comment = req.body.Message;
     let articleId = req.params.id;
     let name = req.body.Name;
 
     let comment = {
-      Message: Message,
+      Message: Comment,
       Name: name,
       date: Date.now(),
     };
@@ -143,6 +144,33 @@ module.exports.addComment = async (req, res) => {
     return res.json({ message: "An error occured, try again", status: 500 });
   }
 };
+
+
+// module.exports.deleteComment = async (req, res) => {
+//   try {
+//     // let commenter = req.User._id
+//     // console.log(req.body.user._id)
+//     let Message = req.body.Message;
+//     let articleId = req.params.id;
+//     let name = req.body.Name;
+//     let id = req.params.id
+//     let art = Article.findById(id)
+
+//     let article = await Article.findById(articleId);
+//     if (!article) {
+//       return res.status(404).send("Article no found!!");
+//     }
+//     article.Comments.push(comment);
+//     article.save();
+//     return res.json({
+//       message: "comment added successfully",
+//       status: 201,
+//       data: article,
+//     });
+//   } catch (e) {
+//     return res.json({ message: "An error occured, try again", status: 500 });
+//   }
+// };
 
 exports.likeArticle = async (req, res) => {
   Article.findByIdAndUpdate(
@@ -179,29 +207,3 @@ exports.unlikeArticle = async (req, res) => {
   });
 };
 
-module.exports.Comment = async (req, res) => {
-  const comment = {
-    PostedBy: req.user._id,
-    Message: req.body.Message,
-    Name: req.body.Name,
-  };
-  Article.findByIdAndUpdate(
-    req.params.id,
-    {
-      $push: { Comments: comment },
-    },
-    {
-      new: true,
-    }
-  )
-
-    .populate("comments.postedBy", "_id name")
-    .populate("postedBy", "_id name")
-    .exec((err, result) => {
-      if (err) {
-        return res.status(422).json({ error: err });
-      } else {
-        res.json(result);
-      }
-    });
-};

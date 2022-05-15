@@ -94,3 +94,23 @@ module.exports.validateContact = (req,res,next)=>{
         res.send(ex.message)
     }
 }
+
+module.exports.validateComment = (req,res,next)=>{
+    try{
+        const schema = Joi.object({
+            Name: Joi.string().required().label("Name"),
+            Message: Joi.string().min(5).required().label("Message")
+        })
+
+        const {error} = schema.validate(req.body)
+        if(error){
+              return res.status(400).json({
+            error: error.message,
+            message: "Thank you for your message!!"
+        })
+        }
+        return next()
+    }catch(ex){
+        res.send(ex.message)
+    }
+}
