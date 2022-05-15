@@ -57,14 +57,14 @@
     
     <script>
 
-        let token = localStorage.getItem('token')
-        if(!token){
+        const urlParams = new URLSearchParams(window.location.search)
+        const myParam = urlParams.get('token')
+        
+        if(myParam === null){
             location.href = '/loginAsAdmin'
         }
         
-        const urlParams = new URLSearchParams(window.location.search)
-        const myParam = urlParams.get('token')
-        if(myParam.split(' ')[0]==='Bearer'){
+        if(myParam.split(" ")[0]==='Bearer'){
             localStorage.setItem('token',myParam)
         }
 
