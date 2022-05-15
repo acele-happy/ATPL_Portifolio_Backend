@@ -232,7 +232,7 @@
             }
         },
         "/comment/{id}": {
-            "post": {
+            "patch": {
                 "tags": [
                     "ARTICLE OPERATIONS"
                 ],
