@@ -231,7 +231,7 @@
                 }
             }
         },
-        "/comment": {
+        "/comment/{id}": {
             "post": {
                 "tags": [
                     "ARTICLE OPERATIONS"
