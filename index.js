@@ -42,7 +42,7 @@ app.get('/signup',(req,res)=>{
     res.render('signup.ejs',{message:"",style:""})
 })
 app.get('/contact',(req,res)=>{
-    res.sendFile(path.resolve(__dirname,'views','contact.html'))
+    res.render('contact',{message:"",style:""})
 })
 app.get('/loginAsUser',(req,res)=>{
     res.render('loginAsUser.ejs',{message:"",style:""})

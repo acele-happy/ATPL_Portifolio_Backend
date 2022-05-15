@@ -84,10 +84,11 @@ module.exports.validateContact = (req,res,next)=>{
 
         const {error} = schema.validate(req.body)
         if(error){
-              return res.status(400).json({
-            error: error.message,
-            message: "Thank you for your message!!"
-        })
+        //       return res.status(400).json({
+        //     error: error.message,
+        //     message: "Thank you for your message!!"
+        // })
+        return res.render('contact',{message: error.message, style: 'error-div'})
         }
         return next()
     }catch(ex){

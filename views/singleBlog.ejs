@@ -157,7 +157,7 @@
     </style>
   </head>
   <body>
-    <a href="/" class="back"
+    <a href="/getAllArticles" class="back"
       ><i class="fa fa-arrow-left" aria-hidden="true"></i
     ></a>
     <div class="container">
@@ -218,7 +218,7 @@
             rows="3"
             placeholder="Write your comment here..."
           ></textarea>
-          <button class="btn" type="submit" onclick="comment('<%=data._id%>')">Comment</button>
+          <button class="btn" onsubmit="comment('<%=data._id%>')">Comment</button>
         </form>
       </div>
     </div>
@@ -227,12 +227,10 @@
     </div>
 
     <script>
-
-      
-      let token = localStorage.getItem('token')
-      if(!token){
-          location.href = '/loginUser'
-      }
+let token = localStorage.getItem('token')
+if(!token){
+  location.href = '/loginAsUser'
+}
 
         function comment(id){
           fetch("https://atpl-my-brand.herokuapp.com/comment/"+id, { 

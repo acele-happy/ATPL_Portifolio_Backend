@@ -10,9 +10,9 @@ module.exports.createContactMessage = async(req,res)=>{
             Message: message
         })
         await newMessage.save()
-        return res.render('contact.ejs',{message:"Thank you, we will be in touch!!",style:"success"}).status(201)
+        return res.render('contact',{message:"Thank you, we will be in touch!!",style:"success"}).status(201)
 
     }catch(ex){
-        res.render('contact.ejs').status(400).send(ex)
+        return res.render('contact',{message: ex})
     }
 }
