@@ -251,7 +251,7 @@
                     },
                     {
                         "in":"path",
-                        "name":"articleId",
+                        "name":"id",
                         "description":"The id of article",
                         "type":"string",
                         "required":"true"
