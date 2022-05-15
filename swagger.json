@@ -257,16 +257,16 @@
                         "required":"true"
                     },
                     {
-                        "in":"path",
+                        "in":"formData",
                         "name":"Name",
-                        "description":"comment",
+                        "description":"Name",
                         "type":"string",
                         "required":"true"
                     },
                     {
-                        "in":"path",
+                        "in":"formData",
                         "name":"Message",
-                        "description":"comment",
+                        "description":"Write your comment",
                         "type":"string",
                         "required":"true"
                     }
